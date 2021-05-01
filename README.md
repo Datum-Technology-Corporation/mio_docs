@@ -1,2 +1,2 @@
-# mio_platform_core_mvp
-Moore.io Platform Core - MVP
+# mio_platform_client_cli_mvp
+Moore.io Platform Client - CLI (Market Viable Prototype)
