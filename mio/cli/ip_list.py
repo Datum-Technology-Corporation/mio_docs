@@ -17,18 +17,19 @@
 
 
 
-"""Moore.io Clean command
-   Manages outputs from tools (other than job results)
+"""Moore.io IP List command
+   Prints all the versions of IPs that are installed, as well as their
+   dependencies when --all is specified, in a tree structure
 
-Usage: mio clean [<ip>... | --all] [options]
-
+Usage:
+   mio ip list [[<@scope>/]<ip>...] [--all]
+   mio ip ls   [[<@scope>/]<ip>...] [--all]
 
 Options:
-  
+   
   
 Examples:
-   mio clean  # Deletes compilation/elaboration artifacts for default IP
-
+   
 """
 
 
