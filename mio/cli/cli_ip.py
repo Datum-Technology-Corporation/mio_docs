@@ -30,6 +30,7 @@ Usage: mio ip <command> [<args> ...]
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import cli_ip_access
 import cli_ip_author
 import cli_ip_bugs
 import cli_ip_dedupe
@@ -69,7 +70,9 @@ import cli_ip_view
 # FUNCTIONS
 ################################################################################
 def ip_main():
-    if args['<command>'] == 'author':
+    if args['<command>'] == 'access':
+        print(docopt(mio_ip_access.__doc__, argv=argv))
+    elif args['<command>'] == 'author':
         print(docopt(mio_ip_author.__doc__, argv=argv))
     elif args['<command>'] == 'bugs':
         print(docopt(mio_ip_bugs.__doc__, argv=argv))

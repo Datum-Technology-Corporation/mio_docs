@@ -26,8 +26,8 @@ Usage:
        <command> [<args> ...]
    mio (-h | --help   )
    mio (-v | --version)
-   mio --list-commands
    mio (--html-path | --man-path | --info-path)
+   mio --list-commands
 
 Options:
    -C <path>
@@ -75,9 +75,6 @@ Options:
       exits. See `mio help <command>` for more information on a specific
       subject.
    
-   --list-commands
-      Prints a list of all mio commands and exits.
-   
    --html-path
       Prints the path, without trailing slash, where mio's HTML
       documentation is installed and exits.
@@ -89,6 +86,9 @@ Options:
    --info-path
       Prints the path where the Info files documenting this version of mio are
       installed and exits.
+   
+   --list-commands
+      Prints a list of all mio commands and exits.
 
 These are common `mio` commands used in various situations:
 
