@@ -102,7 +102,7 @@ Full Command List:
       user           Manages users
 
    Automate Moore.io, F&OS and Vendor EDA Tools
-      sim (dsim)     Performs necessary steps to simulate IP
+      sim            Performs necessary steps to simulate IP
       regr           Runs regression(s) against IP(s)
       lint           Executes hdl linting tool against IP(s)
       synth          Executes logic synthesis tool against IP(s)
