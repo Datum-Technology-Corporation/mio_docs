@@ -115,4 +115,3 @@ Full Command List:
       results        Manages results from EDA tools
       clean          Manages outputs from tools (other than job results)
 
-```
