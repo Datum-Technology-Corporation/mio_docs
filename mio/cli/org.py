@@ -21,9 +21,9 @@
    Organization management.
 
 Usage:
-  mio org set <orgname> <username> [developer | admin | owner]   # 
-  mio org rm <orgname> <username>                                # 
-  mio org ls <orgname> [<username>]                              # 
+  mio org set <orgname>  <username>  [developer | admin | owner]
+  mio org rm  <orgname>  <username>
+  mio org ls  <orgname> [<username>]
 
 Options:
    
@@ -38,6 +38,7 @@ Examples:
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import logging
 ################################################################################
 
 
@@ -52,11 +53,8 @@ from docopt import docopt
 ################################################################################
 # ENTRY POINT
 ################################################################################
-if __name__ == '__main__':
-    if sys.version_info >= (3, 0):
-        print(docopt(__doc__))
-    else:
-        sys.exit("Python version (" + \
-             str(sys.version_info) + \
-             ") not supported. Need 3.0 or higher.")
+def main(upper_args):
+   logging.debug("org - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=True)
+   logging.debug("org - args: " + str(args))
 ################################################################################

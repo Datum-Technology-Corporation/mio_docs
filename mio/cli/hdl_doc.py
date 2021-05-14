@@ -20,16 +20,20 @@
 """Moore.io HDL Doc command
    Generates reference documentation for HDL source
 
-Usage: mio hdl-doc [<ip> ...] [options]
+Usage:
+   mio hdl-doc [<ip> ...] [options]
+   mio hdl-doc *          [options]
 
 Options:
-   --html
-   --pdf
-   --man
+   -o <path>, --output=<path>   Output files to alternate location
+   -a, --all                    Produces all outputs
+   -h, --html                   Produces HTML output
+   -p, --pdf                    Produces PDF output
+   -m, --man                    Produces man page output
 
 Examples:
-   
-"""
+   mio hdl-doc my_ip my_other_ip -hp   # Generates HTML & PDF documentation for 2 IPs
+   mio hdl-doc * -a -o ~/my-ref-doc    # Generates documentation in all formats for all IPs to home directory"""
 
 
 
@@ -37,6 +41,7 @@ Examples:
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import logging
 ################################################################################
 
 
@@ -51,11 +56,8 @@ from docopt import docopt
 ################################################################################
 # ENTRY POINT
 ################################################################################
-if __name__ == '__main__':
-    if sys.version_info >= (3, 0):
-        print(docopt(__doc__))
-    else:
-        sys.exit("Python version (" + \
-             str(sys.version_info) + \
-             ") not supported. Need 3.0 or higher.")
+def main(upper_args):
+   logging.debug("hdl_doc - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=False)
+   logging.debug("hdl_doc - args: " + str(args))
 ################################################################################

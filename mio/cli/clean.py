@@ -20,16 +20,26 @@
 """Moore.io Clean command
    Manages output artifacts from all tools (other than job results)
 
-Usage: mio clean [options] [<ip>... | --all]
-
-
+Usage:
+   mio clean [<ip> ...] [options]   Deletes artifacts for specified IP(s)
+   mio clean *          [options]   Deletes artifacts for all IPs
+   
 Options:
-
-  
+   -F, --force    Forces the deletion of files (if read-only and/or locked)
+   -A, --all      Deletes all EDA tool artifacts
+   -s, --sim      Deletes simulation artifacts
+   -l, --lint     Deletes linting artifacts
+   -f, --formal   Deletes formal verification artifacts
+   -y, --synth    Deletes logic synthesis verification artifacts
+   -t, --sta      Deletes static timing analysis artifacts
+   
 Examples:
-   mio clean  # Deletes compilation/elaboration artifacts for default IP
-
-"""
+   mio clean                                  # Deletes latest artifacts for default-ip
+   mio clean --all                            # Deletes all artifacts for default-ip
+   mio clean my_ip my_other_ip --sim --lint   # Deletes sim and lint artifacts for 2 IPs
+   mio clean * --force -slf                   # Delete sim, lint and formal artifacts for all IPs (with force)
+   mio clean * --all                          # Delete all artifacts for all IPs
+   mio clean * -AF                            # Delete all artifacts for all IPs, overriding all access rights!"""
 
 
 
@@ -37,6 +47,7 @@ Examples:
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import logging
 ################################################################################
 
 
@@ -45,5 +56,7 @@ from docopt import docopt
 # FUNCTIONS
 ################################################################################
 def main(upper_args):
-    args = docopt(__doc__, argv=upper_args)
+    logging.debug("clean - upper_args: " + str(upper_args))
+    args = docopt(__doc__, argv=upper_args, options_first=False)
+    logging.debug("clean - args: " + str(args))
 ################################################################################

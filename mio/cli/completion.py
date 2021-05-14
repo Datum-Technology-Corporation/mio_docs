@@ -18,16 +18,31 @@
 
 
 """Moore.io Completion command
-   Produces outputs for shell/editor tab completion of mio commands
+   Produces outputs for shell/editor tab completion of mio commands and hdl
+   symbols from populated IPs.
 
 Usage:
-   mio completion [--shell=<variant>]  
+   mio completion [--mio-commands] [--shell=<variant>]
+   mio completion  --ctags         [--variant=<type> ]
 
 Options:
-  
+   -m, --mio-commands
+      Outputs Moore.io commands completion text
+   
+   -s <variant>, --shell=<variant>
+      Specify shell variant for completion: bash, csh, zsh [default: bash]
+   
+   -c, --ctags
+      Outputs Ctags of IP HDL symbols
+   
+   -v <type>, --variant=<type>
+      Specifies which CTags variant to use: ctags, etags [default: ctags]
   
 Examples:
-   source <(mio completion)  # Set up auto-complete for all mio commands
+   source <(mio completion --shell=csh)
+   mio completion --mio-commands              >> /usr/local/etc/bash_completion.d/mio
+   mio completion --mio-commands --shell=bash >> ~/.bashrc
+   mio completion --ctags                     >> ~/tags/my_project.tags
 """
 
 
@@ -36,6 +51,7 @@ Examples:
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import logging
 ################################################################################
 
 
@@ -50,11 +66,8 @@ from docopt import docopt
 ################################################################################
 # ENTRY POINT
 ################################################################################
-if __name__ == '__main__':
-    if sys.version_info >= (3, 0):
-        print(docopt(__doc__))
-    else:
-        sys.exit("Python version (" + \
-             str(sys.version_info) + \
-             ") not supported. Need 3.0 or higher.")
+def main(upper_args):
+   logging.debug("completion - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=False)
+   logging.debug("completion - args: " + str(args))
 ################################################################################

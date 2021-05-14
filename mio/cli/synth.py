@@ -35,6 +35,7 @@ Examples:
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import logging
 ################################################################################
 
 
@@ -49,11 +50,8 @@ from docopt import docopt
 ################################################################################
 # ENTRY POINT
 ################################################################################
-if __name__ == '__main__':
-    if sys.version_info >= (3, 0):
-        print(docopt(__doc__))
-    else:
-        sys.exit("Python version (" + \
-             str(sys.version_info) + \
-             ") not supported. Need 3.0 or higher.")
+def main(upper_args):
+   logging.debug("synth - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=True)
+   logging.debug("synth - args: " + str(args))
 ################################################################################

@@ -34,6 +34,7 @@ import sys
 from . import ip_access
 from . import ip_author
 from . import ip_bugs
+#from . import ip_ci
 from . import ip_dedupe
 from . import ip_deprecate
 from . import ip_diff

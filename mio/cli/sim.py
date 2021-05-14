@@ -18,18 +18,30 @@
 
 
 """Moore.io Sim command
-   Performs necessary steps to simulate IP
+   Performs necessary steps to perform simulation of IP
 
-Usage:
-  mio sim [<ip>] [options]
+Usage: mio sim  [<ip>] [options]
 
 Options:
-    --test=<name>
-    --seed=<integer>
-    --verbosity=<level>
+    -t <name>   , --test=<name>
+    -s <integer>, --seed=<integer>
+    -v <level>  , --verbosity=<level>
+    -w          , --waves
+    -g          , --gui
+    -c <flags>  , --cov=<flags>
+    -O <level>  , --optimization=<level>
+    -L          , --library-creation-only
+    -C          , --compilation-only
+    -E          , --elaboration-only
+    -S          , --simulation-only
+    -N <name>   , --netlist=<name>
+    -T <name>   , --sdf=<name>
   
 Examples:
    mio sim --seed 42 --verbosity high   # Simulates default IP with default test, seed 42 and a high verbosity
+   mio sim my_ip -t smoke -s 1 -w --cov=f
+   mio sim uvmt_pcie_rc -t scenario_678 -s 8477203 --gui
+   mio sim -NCE --sdf=
 """
 
 
@@ -38,6 +50,7 @@ Examples:
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import logging
 ################################################################################
 
 
@@ -52,11 +65,8 @@ from docopt import docopt
 ################################################################################
 # ENTRY POINT
 ################################################################################
-if __name__ == '__main__':
-    if sys.version_info >= (3, 0):
-        print(docopt(__doc__))
-    else:
-        sys.exit("Python version (" + \
-             str(sys.version_info) + \
-             ") not supported. Need 3.0 or higher.")
+def main(upper_args):
+   logging.debug("sim - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=True)
+   logging.debug("sim - args: " + str(args))
 ################################################################################

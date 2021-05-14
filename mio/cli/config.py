@@ -18,22 +18,27 @@
 
 
 """Moore.io Config command
-   Reads/writes to/from mio configuration space
+   Reads/writes to/from mio configuration space.
+   
+   Moore.io gets it configuration settings from the command line, environment
+   variables, `.mio.toml` files, and in some cases, `ip.yml` file(s).
+   
+   See '.mio.toml' for more information about the mio configuration files.
 
 Usage:
-   mio config set <key>=<value> [<keys>=<values> ...]  Writes configuration key/value pair(s)
-   mio config get <key> [<keys> ...]                   Prints configuration key(s)
-   mio config delete <key> [<keys> ...]                Deletes key(s)
-   mio config list                                     Prints all keys and their values
-   mio config edit                                     Opens 'local' .mio.toml configuration file in default editor.
+   mio config set    <key>=<value> ...  Writes configuration key/value pair(s)
+   mio config get    <key>         ...  Prints configuration key(s)
+   mio config delete <key>         ...  Deletes key(s)
+   mio config list                      Prints all keys and their values
+   mio config edit   [--global]         Opens 'local' .mio.toml configuration file in default editor.
 
 Options:
-   
+   -g, --global   Edits the global configuration file
   
 Examples:
-   mio config set default-ip=uvmt_ss_mem            # Sets Default IP to uvmt_ss_mem 
-   mio config set default-test=smoke                # Sets Default Test to 'smoke'
-   mio config set default-simulator=xilinx          # Sets Default Simulator to 'xilinx'
+   mio config set default-ip=uvmt_ss_mem   # Sets Default IP to uvmt_ss_mem
+   mio config set default-test=smoke       # Sets Default Test to 'smoke'
+   mio config get default-simulator        # Prints Default Simulator to stdout
 """
 
 
@@ -42,6 +47,7 @@ Examples:
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import logging
 ################################################################################
 
 
@@ -56,11 +62,8 @@ from docopt import docopt
 ################################################################################
 # ENTRY POINT
 ################################################################################
-if __name__ == '__main__':
-    if sys.version_info >= (3, 0):
-        print(docopt(__doc__))
-    else:
-        sys.exit("Python version (" + \
-             str(sys.version_info) + \
-             ") not supported. Need 3.0 or higher.")
+def main(upper_args):
+   logging.debug("config - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=False)
+   logging.debug("config - args: " + str(args))
 ################################################################################

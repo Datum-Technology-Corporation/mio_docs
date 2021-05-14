@@ -21,15 +21,7 @@
    Runs a set of checks to ensure mio installation has what it needs to operate
    properly
 
-Usage:
-   mio doctor 
-
-Options:
-  
-  
-Examples:
-   
-"""
+Usage: mio doctor"""
 
 
 
@@ -37,6 +29,7 @@ Examples:
 # IMPORTS
 ################################################################################
 from docopt import docopt
+import logging
 ################################################################################
 
 
@@ -51,11 +44,8 @@ from docopt import docopt
 ################################################################################
 # ENTRY POINT
 ################################################################################
-if __name__ == '__main__':
-    if sys.version_info >= (3, 0):
-        print(docopt(__doc__))
-    else:
-        sys.exit("Python version (" + \
-             str(sys.version_info) + \
-             ") not supported. Need 3.0 or higher.")
+def main(upper_args):
+   logging.debug("doctor - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args)
+   logging.debug("doctor - args: " + str(args))
 ################################################################################
