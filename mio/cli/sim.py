@@ -20,7 +20,7 @@
 """Moore.io Sim command
    Performs necessary steps to perform simulation of IP
 
-Usage: mio sim  [<ip>] [options]
+Usage: mio sim [<ip>] [options]
 
 Options:
     -t <name>   , --test=<name>
@@ -41,8 +41,7 @@ Examples:
    mio sim --seed 42 --verbosity high   # Simulates default IP with default test, seed 42 and a high verbosity
    mio sim my_ip -t smoke -s 1 -w --cov=f
    mio sim uvmt_pcie_rc -t scenario_678 -s 8477203 --gui
-   mio sim -NCE --sdf=
-"""
+   mio sim -CE --netlist=latest.sv --sdf=default.sdf"""
 
 
 

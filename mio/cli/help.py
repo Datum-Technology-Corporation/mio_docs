@@ -30,6 +30,13 @@ Examples:
 
 
 
+logo = """         ███╗   ███╗ ██████╗  ██████╗ ██████╗ ███████╗   ██╗ ██████╗
+         ████╗ ████║██╔═══██╗██╔═══██╗██╔══██╗██╔════╝   ██║██╔═══██╗
+         ██╔████╔██║██║   ██║██║   ██║██████╔╝█████╗     ██║██║   ██║
+         ██║╚██╔╝██║██║   ██║██║   ██║██╔══██╗██╔══╝     ██║██║   ██║
+         ██║ ╚═╝ ██║╚██████╔╝╚██████╔╝██║  ██║███████╗██╗██║╚██████╔╝
+         ╚═╝     ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝╚═╝ ╚═════╝ """
+
 cli_title = "Moore.io (`mio`) Command Line Interface (CLI)"
 
 cli_usage = """Usage:
@@ -159,7 +166,8 @@ automate EDA tools
 See `mio help <command>` to read about a specific subcommand.
 See `mio help mio` for an overview of the system."""
 
-mio_text = f"""                 {cli_title}
+mio_text = f"""{logo}
+                 {cli_title}
                         I N T E R A C T I V E   D E M O
 
 {cli_usage}

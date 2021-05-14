@@ -21,7 +21,8 @@
    Executes regression for target IP
 
 Usage:
-   mio regr [<ip>] <regression name> [options]
+   mio regr [<ip>] <regression name>      [options]
+   mio regr [<ip>  <regression name> ...] [options]
 
 Options:
    

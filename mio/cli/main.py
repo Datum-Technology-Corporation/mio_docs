@@ -75,7 +75,7 @@ mio_version = '0.1.0.0'
 # TOP-LEVEL FUNCTIONS
 ################################################################################
 def proccess_args():
-    args = docopt(__doc__, options_first=True, version=False)
+    args = docopt(__doc__, options_first=True, version=False, help=False)
     argv = [args['<command>']] + args['<args>']
     debug = 0
     if '--dbg' in args:
@@ -94,6 +94,7 @@ def proccess_args():
     logging.debug('global arguments:\n' + str(args))
     logging.debug('command arguments:\n' + str(argv))
 
+    process_help(args, argv)
     process_version(args, argv)
     process_list_commands(args, argv)
     process_html_path(args, argv)
@@ -213,11 +214,13 @@ def feature_not_supported():
 
 
 def print_help():
-    print(doc)
+    #print(text2art("Moore.io", "ticks"))
+    print(help.logo)
+    print(__doc__)
 
 
 def print_version():
-    print(f"Moore.io CLI v{mio_version}")
+    print(mio_version)
 
 
 def print_list_of_commands():
