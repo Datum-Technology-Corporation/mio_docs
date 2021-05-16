@@ -23,11 +23,9 @@
 
 Usage: mio help-search <text>
 
-Options:
-   
-  
 Examples:
-   
+   mio help-search 'updating all IPs'
+   mio help-search '*command*'
 """
 
 

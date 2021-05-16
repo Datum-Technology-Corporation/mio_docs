@@ -20,13 +20,12 @@
 """Moore.io Help command
    Shows the appropriate documentation page for the specified command
 
-Usage: mio help <command> [<subcommand]
+Usage: mio help <command> [<subcommand>]
 
 Examples:
    mio help sim
    mio help ip install
-   mio help mio
-"""
+   mio help mio"""
 
 
 
@@ -205,7 +204,7 @@ from . import team
 from . import user
 from . import vcs
 from . import ip_access
-from . import ip_author
+from . import ip_owner
 from . import ip_bugs
 #from . import ip_ci
 from . import ip_dedupe
@@ -247,70 +246,102 @@ from . import ip_view
 def process_ip_args(subcommand):
    if subcommand == 'access':
       print(ip_access.__doc__)
+      exit()
    elif subcommand == 'author':
-      print(ip_author.__doc__)
+      print(ip_owner.__doc__)
+      exit()
    elif subcommand == 'bugs':
       print(ip_bugs.__doc__)
+      exit()
    elif subcommand == 'dedupe':
       print(ip_dedupe.__doc__)
+      exit()
    elif subcommand == 'deprecate':
       print(ip_deprecate.__doc__)
+      exit()
    elif subcommand == 'diff':
       print(ip_diff.__doc__)
+      exit()
    elif subcommand == 'docs':
       print(ip_docs.__doc__)
+      exit()
    elif subcommand == 'edit':
       print(ip_edit.__doc__)
+      exit()
    elif subcommand == 'exec':
       print(ip_exec.__doc__)
+      exit()
    elif subcommand == 'explain':
       print(ip_explain.__doc__)
+      exit()
    elif subcommand == 'explore':
       print(ip_explore.__doc__)
+      exit()
    elif subcommand == 'fund':
       print(ip_fund.__doc__)
+      exit()
    elif subcommand == 'hook':
       print(ip_hook.__doc__)
+      exit()
    elif subcommand == 'install':
       print(ip_install.__doc__)
+      exit()
    elif subcommand == 'integrate':
       print(ip_integrate.__doc__)
+      exit()
    elif subcommand == 'ls':
       print(ip_list.__doc__)
+      exit()
    elif subcommand == 'outdated':
       print(ip_outdated.__doc__)
+      exit()
    elif subcommand == 'pack':
       print(ip_pack.__doc__)
+      exit()
    elif subcommand == 'prune':
       print(ip_prune.__doc__)
+      exit()
    elif subcommand == 'publish':
       print(ip_publish.__doc__)
+      exit()
    elif subcommand == 'repo':
       print(ip_repo.__doc__)
+      exit()
    elif subcommand == 'run-script':
       print(ip_run_script.__doc__)
+      exit()
    elif subcommand == 'search':
       print(ip_search.__doc__)
+      exit()
    elif subcommand == 'set-script':
       print(ip_set_script.__doc__)
+      exit()
    elif subcommand == 'shrinkwrap':
       print(ip_shrinkwrap.__doc__)
+      exit()
    elif subcommand == 'tag':
       print(ip_tag.__doc__)
+      exit()
    elif subcommand == 'test':
       print(ip_test.__doc__)
+      exit()
    elif subcommand == 'uninstall':
       print(ip_uninstall.__doc__)
+      exit()
    elif subcommand == 'unpublish':
       print(ip_unpublish.__doc__)
+      exit()
    elif subcommand == 'update':
       print(ip_update.__doc__)
+      exit()
    elif subcommand == 'version':
       print(ip_version.__doc__)
+      exit()
    elif subcommand == 'view':
       print(ip_view.__doc__)
+      exit()
    else:
-      exit(f"Invalid IP subcommand: '{subcommand}'")
+      exit("No such subcommand for `mio ip`")
 ################################################################################
 
 
@@ -320,7 +351,7 @@ def process_ip_args(subcommand):
 ################################################################################
 def main(upper_args):
    logging.debug("help - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args)
    logging.debug("help - args: " + str(args))
    
    if args['<command>'] == None:
@@ -362,7 +393,11 @@ def main(upper_args):
          print(init.__doc__)
          exit()
       elif command == 'ip':
-         process_ip_args(args['<subcommand>'])
+         if '<subcommand>' in args:
+            process_ip_args(args['<subcommand>'])
+         else:
+            print(ip.__doc__)
+            exit()
       elif command == 'lint':
          print(lint.__doc__)
          exit()

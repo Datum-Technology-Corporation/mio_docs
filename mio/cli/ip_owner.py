@@ -17,13 +17,13 @@
 
 
 
-"""Moore.io IP Author command
+"""Moore.io IP Owner command
    
 
 Usage:
-   mio ip author add <user> [<@scope>/]<ip>   Adds author to target IP
-   mio ip author rm <user> [<@scope>/]<ip>    Removes author from target IP
-   mio ip author ls [<@scope>/]<ip>           Lists authors for target IP
+   mio ip owner add <user> [<@scope>/]<ip>    Adds owner to target IP
+   mio ip owner rm  <user> [<@scope>/]<ip>    Removes owner from target IP
+   mio ip owner ls [<@scope>/]<ip>            Lists owners for target IP
 
 Options:
    
@@ -54,7 +54,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_author - upper_args: " + str(upper_args))
+   logging.debug("ip_owner - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_author - args: " + str(args))
+   logging.debug("ip_owner - args: " + str(args))
 ################################################################################

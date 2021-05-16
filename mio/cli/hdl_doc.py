@@ -18,7 +18,7 @@
 
 
 """Moore.io HDL Doc command
-   Generates reference documentation for HDL source
+   Generates reference documentation for HDL source code.
 
 Usage:
    mio hdl-doc [<ip> ...] [options]

@@ -18,11 +18,26 @@
 
 
 """Moore.io IP command
-   IP Management
+   IP Management. The following subcommands are available (see
+   `mio help ip <subcommand>` for more information):
 
-Usage: mio ip <command> [<args> ...]
+      View IP metadata
+         bugs  ci  docs  explain  fund  list  id  outdated  repo  search  view
+   
+      Operate on the IP registry
+         publish  test  unpublish
+   
+      Modify IP metadata
+         access  copy  deprecate  hook  init  integrate  move  owner  set-script
+         shrinkwrap  tag  version
+   
+      Operate on IP dependencies
+         dedupe  install  prune  uninstall  update
+   
+      Operate on IP contents
+         diff  edit  exec  explore  pack  run-script
 
-"""
+Usage: mio ip <command> [<args> ...]"""
 
 
 
@@ -32,9 +47,9 @@ Usage: mio ip <command> [<args> ...]
 from docopt import docopt
 import sys
 from . import ip_access
-from . import ip_author
 from . import ip_bugs
-#from . import ip_ci
+#from . import ip_ci   # Sends you to IP CI page (Jenkins, Bamboo, etc.) rather than doing a clean install (as in npm); for that, check out `ip update --clean`
+#from . import ip_copy    # Copies IP
 from . import ip_dedupe
 from . import ip_deprecate
 from . import ip_diff
@@ -45,10 +60,14 @@ from . import ip_explain
 from . import ip_explore
 from . import ip_fund
 from . import ip_hook
+#from . import ip_init   # Creates ip.yml, same as `npm init`, recommended that users use `mio new` (which itself calls `ip init`)
 from . import ip_install
 from . import ip_integrate
 from . import ip_list
+# from . import ip_id   #  Prints a fully qualified IP specification (from `cargo pkgid`)
+# from . import ip_move   # Move/rename IP around project structure (if many dirs have IPs) or to another project altogether (also implements `cargo vendor`)
 from . import ip_outdated
+from . import ip_owner
 from . import ip_pack
 from . import ip_prune
 from . import ip_publish
@@ -56,7 +75,7 @@ from . import ip_repo
 from . import ip_run_script
 from . import ip_search
 from . import ip_set_script
-from . import ip_shrinkwrap
+from . import ip_shrinkwrap   # Creates/updates ip.lock.yml. Also implements cargo's 'verify-project'
 from . import ip_tag
 from . import ip_test
 from . import ip_uninstall
@@ -77,8 +96,6 @@ def main(up_args):
 
     if args['<command>'] == 'access':
         print(docopt(ip_access.__doc__, argv=argv))
-    elif args['<command>'] == 'author':
-        print(docopt(ip_author.__doc__, argv=argv))
     elif args['<command>'] == 'bugs':
         print(docopt(ip_bugs.__doc__, argv=argv))
     elif args['<command>'] == 'dedupe':
@@ -109,6 +126,8 @@ def main(up_args):
         print(docopt(ip_list.__doc__, argv=argv))
     elif args['<command>'] == 'outdated':
         print(docopt(ip_outdated.__doc__, argv=argv))
+    elif args['<command>'] == 'owner':
+        print(docopt(ip_owner.__doc__, argv=argv))
     elif args['<command>'] == 'pack':
         print(docopt(ip_pack.__doc__, argv=argv))
     elif args['<command>'] == 'prune':

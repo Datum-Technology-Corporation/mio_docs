@@ -21,7 +21,9 @@
    Creates .mio.toml and starts Project creation dialog (unless args-file is
    specified)
 
-Usage: mio init [<name>] [--template=<name> | --args-file=<path>] [--location=<path>]
+Usage:
+   mio init
+   mio init [<name>] [--template=<name> | --args-file=<path>] [--location=<path>]
 
 Options:
    
