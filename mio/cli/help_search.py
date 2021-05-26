@@ -17,15 +17,19 @@
 
 
 
-"""Moore.io  command
+"""Moore.io Help-Search command
    Searches mio documentation for the terms provided and lists the results by
    relevance.
 
-Usage: mio help-search <text>
+Usage: mio help-search [options] <text> ...
+
+Options:
+   -f <type>, --format=<type>
+      Specifies output format: text, yml, xml, json, csv [default: text]
 
 Examples:
-   mio help-search 'updating all IPs'
-   mio help-search '*command*'
+   mio help-search 'update all dependencies'
+   mio help-search '*sim*'
 """
 
 

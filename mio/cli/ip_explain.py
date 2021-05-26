@@ -21,14 +21,11 @@
    Prints the chain of dependencies causing a given IP to be installed in the
    current project.
 
-Usage:
-   mio ip explain [<ip>]
-
-Options:
-   
+Usage: mio ip explain [<name>@<version-range> ...]
   
 Examples:
-   
+   mio ip explain some_dependency   # Print out tree that leads to an IP being in the source tree
+   mip ip explain this_ip@"7.1.4"   # Print out tree that leads to an IP of a specific version being included
 """
 
 

@@ -20,17 +20,30 @@
 """Moore.io IP Prune command
    Removes extraneous IPs. If an IP name is provided, then only IPs matching one
    of the supplied names are removed.
+   
+   Extraneous IPs are those present in IP dependencies directories that are not
+   listed as any IP's dependency list.
 
-Usage: mio ip prune [[<@scope>/]<ip>...] [--dry-run]
+   If the --production flag is specified or the MIO_ENV environment variable is
+   set to production, this command will remove the IPs specified in your
+   dev-dependencies. Setting --no-production will negate MIO_ENV being set to
+   production.
+
+   If the --dry-run flag is used then no changes will actually be made.
+
+Usage:
+   mio ip prune [[<@scope>/]<ip> ...] [options]
+   mio ip prune *                     [options]
 
 Options:
-   
+   -d, --dry-run        Disables any action(s) from taking place
+   -p, --production     Enables production mode
+   -n, --no-production  Disables production mode
   
 Examples:
-   mio ip new ss_mem      --template='mio-rtl-ss'   # Creates a new IP named 'ss_mem' from template 'mio-rtl-ss'
-   mio ip new uvmt_ss_mem --template='mio-dv-ss'    # Creates a new VIP named 'uvmt_ss_mem' from template 'mio-dv-ss'
-   mio ip update                                    # Retrieves latest versions of IP dependencies
-"""
+   mio ip prune                                  # Prune dependency tree for default-ip
+   mio ip prune @greece/antikythera diff_eng -p  # Prune multiple IP trees in production mode
+   mio ip prune * --no-production                # Prune all IP trees in development mode"""
 
 
 

@@ -17,13 +17,10 @@
 
 
 
-"""Moore.io IP List command
-   Prints all the versions of IPs that are installed, as well as their
-   dependencies when --all is specified, in a tree structure
+"""Moore.io Set Script command
+   
 
-Usage:
-   mio ip list [[<@scope>/]<ip>...] [--all]
-   mio ip ls   [[<@scope>/]<ip>...] [--all]
+Usage: mio set-script
 
 Options:
    
@@ -54,7 +51,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_list - upper_args: " + str(upper_args))
+   logging.debug("ip_set_script - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_list - args: " + str(args))
+   logging.debug("ip_set_script - args: " + str(args))
 ################################################################################

@@ -17,15 +17,17 @@
 
 
 
-"""Moore.io IP Explore command
-   Spawns a subshell in the IP directory. If 'command' is specified, it is run
-   and the subshell immediately terminates.
+"""Moore.io IP Push command
+   Emits request to public IP VCS to take in locally made changes.
 
 Usage:
-   mio ip explore <ip> [-- <command>]
+   mio ip push ...
+
+Options:
+   
   
 Examples:
-   mio ip explore this_ip  -- grep 'uvm_object' > ~/this_ip_grep_results.txt
+   
 """
 
 
@@ -50,7 +52,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_explore - upper_args: " + str(upper_args))
+   logging.debug("ip_test - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_explore - args: " + str(args))
+   logging.debug("ip_test - args: " + str(args))
 ################################################################################

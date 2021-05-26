@@ -21,16 +21,27 @@
    Organization management.
 
 Usage:
-  mio org set <orgname>  <username>  [developer | admin | owner]
-  mio org rm  <orgname>  <username>
-  mio org ls  <orgname> [<username>]
+  mio org set <orgname>  <username>  [developer | admin | owner] [options]
+  mio org rm  <orgname>  <username>                              [options]
+  mio org ls  <orgname> [<username>]                             [options]
 
 Options:
-   
-  
+   -r <url>, --registry=<url>
+      The base URL of the IP registry.
+   -o <pwd>, --otp=<pwd>
+      One-time password from a two-factor authenticator
+   -f <type>, --format=<type>
+      Specifies output format: text, yml, xml, json, csv [default: text]
+   -t, --use-tabs
+      Output search results as lines with tab-separated columns.
+
 Examples:
-   
-"""
+   mio org set my-org @cbabbage         # Add a new developer to an org
+   mio org set my-org @cbabbage admin   # Add a new admin to an org (or change a developer to an admin)
+   mio org rm  my-org cbabbage          # Remove a user from an org
+   mio org ls  my-org                   # List all users in an org
+   mio org ls  my-org -f json           # List all users in JSON format
+   mio org ls  my-org @cbabbage         # See what role a user has in an org"""
 
 
 
@@ -55,6 +66,6 @@ import logging
 ################################################################################
 def main(upper_args):
    logging.debug("org - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("org - args: " + str(args))
 ################################################################################

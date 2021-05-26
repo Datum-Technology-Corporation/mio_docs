@@ -18,19 +18,20 @@
 
 
 """Moore.io IP Tag command
-   Adds, removes, or enumerates distribution tags on an IP
+   Adds, removes, or enumerates distribution tags on an IP.
 
 Usage:
-   mio ip tag add <ip>@<version> [<tag>]
-   mio ip tag rm <ip> <tag>
-   mio ip tag ls [<ip>]
+   mio ip tag add [options]  <ip>@<version> [<tag>]  Create new tag for IP and version
+   mio ip tag rm  [options]  <ip>            <tag>   Remove existing tag
+   mio ip tag ls  [options] [<ip>]                   List existing tag(s)
 
 Options:
-   
+   -o <pwd>, --otp=<pwd>  If you have two-factor authentication enabled, you
+   will need to include a one-time password on the command line
   
 Examples:
-   
-"""
+   mio ip tag add diff_eng@1.0.0 stable
+   mio ip tag rm  diff_eng       beta"""
 
 
 

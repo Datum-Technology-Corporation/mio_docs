@@ -18,17 +18,21 @@
 
 
 """Moore.io IP Outdated command
-   Checks registry to see if any (or, speific) installed packages are currently
-   outdated
+   Checks registry to see if any (or, speific) installed IPs are currently
+   outdated. By default, only the direct dependencies of the Project are shown.
+   Use --all to find all outdated meta-dependencies as well.
 
-Usage: mio ip outdated [[<@scope>/]<ip>...]
+Usage:
+   mio ip outdated [[<@scope>/]<ip> ...] [--all]
+   mio ip outdated *                     [--all]
 
 Options:
-   
+   -a, --all   Also check meta-dependencies
   
 Examples:
-   
-"""
+   mio ip outdated                      # Checks immediate dependencies for default-ip
+   mio ip outdated this_ip that_ip -a   # Check all dependencies for specified IPs
+   mio ip outdated * --all              # Check all IPs and all dependencies"""
 
 
 

@@ -18,17 +18,26 @@
 
 
 """Moore.io IP Edit command
-   Opens IP source in default editor. If IP is a dependecy, it is first linked
-   into the source tree.
+   Opens IP source in default editor. If IP is a dependency, it is first
+   imported into the source tree.
 
 Usage:
-   mio ip edit <ip>
+   mio ip edit [<ip> ...] [options]
+   mio ip edit *          [options}
 
 Options:
-   
+   -a, --auto-build
+      If enabled, IP will be automatically built upon file changes
+      (see configuration field `default-auto-build` for more info).
+   -e <command>, --editor=<command>
+      Forces mio to execute `command <file1> <file2> ...` over the default
+      editor.
   
 Examples:
-   
+   mio ip edit                      # Edit default-ip in default-editor
+   mio ip edit some_dependency -a   # Edit IP dependency with auto-build enabled
+   mio ip edit --editor=xemacs      # Edit default-ip in `xemacs`
+   mio ip edit * -e vi              # Edit all IPs in `vi`. Warning: for code ninjas only
 """
 
 

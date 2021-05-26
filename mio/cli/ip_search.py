@@ -18,16 +18,66 @@
 
 
 """Moore.io IP Search command
+   Search the registry for IPs matching the search terms. `mio ip search`
+   performs a linear, incremental, lexically-ordered search through IP
+   metadata for all files in the registry. If your terminal has color support,
+   it will further highlight the matches in the results. This can be disabled
+   with the config item `color`.
    
+   Search also allows targeting of maintainers in search results, by prefixing
+   their mio username with `=`.
 
-Usage: mio ip search
+   If a term starts with `/`, then it's interpreted as a regular expression and
+   supports standard GNU RegExp syntax. In this case search will ignore a
+   trailing `/` . (Note you must escape or quote many regular expression
+   characters in most shells.)
+   
+   The mio ip cli caches search results with the same terms and options locally
+   in its cache. You can use the following to change how and when the cli uses
+   this cache. See `mio ip cache` for more on how the cache works.
+
+   `prefer-online`
+   Forces staleness checks for cached searches, making the cli look for updates immediately even for fresh search results.
+
+   `prefer-offline`
+   Bypasses staleness checks for cached searches. Missing data will still be
+   requested from the server. To force full offline mode, use offline.
+
+   `offline`
+   Forces full offline mode. Any searches not locally cached will result in an
+   error.
+
+Usage: mio ip search [options] <search term> ...
 
 Options:
+   -r <url>, --registry=<url>
+      Specifies the registry to search for IPs.
    
-  
+   -o <options>, --opts=<options>
+      Space-separated options that are always passed to search.
+      
+   -e <exclusions>, --exclude=<exclusions>
+      Space-separated options that limit the results from search.
+      
+   -f <type>, --format=<type>
+      Specifies output format: text, yml, xml, json, csv [default: text]
+      
+   -l, --long
+      Displays full IP descriptions and other long text across multiple lines.
+      When disabled (which is the default) the output will truncate search
+      results to fit neatly on a single line. IPs with extremely long names will
+      fall on multiple lines.
+      
+   -t, --use-tabs
+      Output search results as lines with tab-separated columns.
+   
+   -n, --no-description
+      Omit IP description in the search results.
+
 Examples:
-   
-"""
+   mio ip search 'diff*_eng*'
+   mio ip search --long -e 'vmm ovm' '*uvm*eth*'
+   mip ip search --format=xml '=mbabbage'"""
 
 
 

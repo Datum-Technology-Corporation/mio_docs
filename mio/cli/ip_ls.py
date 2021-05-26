@@ -17,16 +17,40 @@
 
 
 
-"""Moore.io IP Explore command
-   Spawns a subshell in the IP directory. If 'command' is specified, it is run
-   and the subshell immediately terminates.
+"""Moore.io IP Ls command
+   Prints all the versions of IPs that are installed, as well as their
+   dependencies when --all is specified, in a tree structure.
 
 Usage:
-   mio ip explore <ip> [-- <command>]
-  
+   mio ip ls [[<@scope>/]<ip> ...] [--all]
+   mio ip ls *                     [--all]
+
+Options:
+   -a, --all
+      Prints dependencies
+   
+   -g, --global
+      Operates in "global" mode, so that
+   
+   -f <type>, --format=<type>
+      Specifies output format: text, yml, xml, json, csv [default: text]
+      
+   -l, --long
+      Displays full IP descriptions and other long text across multiple lines.
+      When disabled (which is the default) the output will truncate search
+      results to fit neatly on a single line. IPs with extremely long names will
+      fall on multiple lines.
+      
+   -t, --use-tabs
+      Output search results as lines with tab-separated columns.
+   
+   -d <level>, --depth=<level>
+      Recursive depth for printing out IPs. [default: infinity]
+   
 Examples:
-   mio ip explore this_ip  -- grep 'uvm_object' > ~/this_ip_grep_results.txt
-"""
+   mio ip ls -a           # Print default-ip dependencies
+   mio ip ls this_ip -a   # Print IP info and all its dependencies
+   mio ip ls * --all      # Print all IPs and their dependencies"""
 
 
 
@@ -50,7 +74,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_explore - upper_args: " + str(upper_args))
+   logging.debug("ip_list - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_explore - args: " + str(args))
+   logging.debug("ip_list - args: " + str(args))
 ################################################################################

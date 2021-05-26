@@ -17,15 +17,18 @@
 
 
 
-"""Moore.io IP Explore command
-   Spawns a subshell in the IP directory. If 'command' is specified, it is run
-   and the subshell immediately terminates.
+"""Moore.io HDL Refactor command
+   Enforces SystemVerilog/VHDL code style policies without affecting
+   functionality.
 
 Usage:
-   mio ip explore <ip> [-- <command>]
+   mio hdl-beautify [<ip>]  [options]
+
+Options:
+   # TBD
   
 Examples:
-   mio ip explore this_ip  -- grep 'uvm_object' > ~/this_ip_grep_results.txt
+   
 """
 
 
@@ -50,7 +53,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_explore - upper_args: " + str(upper_args))
+   logging.debug("hdl_beautify - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_explore - args: " + str(args))
+   logging.debug("hdl_beautify - args: " + str(args))
 ################################################################################

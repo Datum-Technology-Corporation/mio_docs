@@ -22,20 +22,20 @@
    `mio help ip <subcommand>` for more information):
 
       View IP metadata
-         bugs  ci  docs  explain  fund  list  id  outdated  repo  search  view
+         bugs  ci  docs  explain  fund  ls  id  outdated  repo  search  view
    
       Operate on the IP registry
-         publish  test  unpublish
+         cache publish  test  unpublish
    
       Modify IP metadata
-         access  copy  deprecate  hook  init  integrate  move  owner  set-script
+         access  copy  deprecate  hook  init  integrate  move  owner
          shrinkwrap  tag  version
    
       Operate on IP dependencies
          dedupe  install  prune  uninstall  update
    
       Operate on IP contents
-         diff  edit  exec  explore  pack  run-script
+         diff  edit  exec  explore  pack
 
 Usage: mio ip <command> [<args> ...]"""
 
@@ -48,33 +48,34 @@ from docopt import docopt
 import sys
 from . import ip_access
 from . import ip_bugs
-#from . import ip_ci   # Sends you to IP CI page (Jenkins, Bamboo, etc.) rather than doing a clean install (as in npm); for that, check out `ip update --clean`
-#from . import ip_copy    # Copies IP
+from . import ip_cache
+from . import ip_ci      # Sends you to IP CI page (Jenkins, Bamboo, etc.) rather than doing a clean install (as in npm); for that, check out `ip update --clean`
+from . import ip_copy    # Copies IP
 from . import ip_dedupe
 from . import ip_deprecate
 from . import ip_diff
 from . import ip_docs
 from . import ip_edit
-from . import ip_exec
 from . import ip_explain
 from . import ip_explore
 from . import ip_fund
 from . import ip_hook
-#from . import ip_init   # Creates ip.yml, same as `npm init`, recommended that users use `mio new` (which itself calls `ip init`)
+from . import ip_id   #   (from `cargo pkgid`)
+from . import ip_init   # Creates ip.yml, same as `npm init`, recommended that users use `mio new` (which itself calls `ip init`)
 from . import ip_install
 from . import ip_integrate
-from . import ip_list
-# from . import ip_id   #  Prints a fully qualified IP specification (from `cargo pkgid`)
-# from . import ip_move   # Move/rename IP around project structure (if many dirs have IPs) or to another project altogether (also implements `cargo vendor`)
+from . import ip_ls
+from . import ip_move   # Move/rename IP around project structure (if many dirs have IPs) or to another project altogether (also implements `cargo vendor`)
 from . import ip_outdated
 from . import ip_owner
 from . import ip_pack
 from . import ip_prune
 from . import ip_publish
+from . import ip_push   # If IP is public and under known VCS type, will emit 'pull request' against IP repo
 from . import ip_repo
-from . import ip_run_script
+from . import run_script
 from . import ip_search
-from . import ip_set_script
+from . import set_script
 from . import ip_shrinkwrap   # Creates/updates ip.lock.yml. Also implements cargo's 'verify-project'
 from . import ip_tag
 from . import ip_test
@@ -98,6 +99,8 @@ def main(up_args):
         print(docopt(ip_access.__doc__, argv=argv))
     elif args['<command>'] == 'bugs':
         print(docopt(ip_bugs.__doc__, argv=argv))
+    elif args['<command>'] == 'cache':
+        print(docopt(ip_cache.__doc__, argv=argv))
     elif args['<command>'] == 'dedupe':
         print(docopt(ip_dedupe.__doc__, argv=argv))
     elif args['<command>'] == 'deprecate':
@@ -108,8 +111,6 @@ def main(up_args):
         print(docopt(ip_docs.__doc__, argv=argv))
     elif args['<command>'] == 'edit':
         print(docopt(ip_edit.__doc__, argv=argv))
-    elif args['<command>'] == 'exec':
-        print(docopt(ip_exec.__doc__, argv=argv))
     elif args['<command>'] == 'explain':
         print(docopt(ip_explain.__doc__, argv=argv))
     elif args['<command>'] == 'explore':
@@ -123,7 +124,7 @@ def main(up_args):
     elif args['<command>'] == 'integrate':
         print(docopt(ip_integrate.__doc__, argv=argv))
     elif args['<command>'] == 'ls':
-        print(docopt(ip_list.__doc__, argv=argv))
+        print(docopt(ip_ls.__doc__, argv=argv))
     elif args['<command>'] == 'outdated':
         print(docopt(ip_outdated.__doc__, argv=argv))
     elif args['<command>'] == 'owner':
@@ -137,11 +138,11 @@ def main(up_args):
     elif args['<command>'] == 'repo':
         print(docopt(ip_repo.__doc__, argv=argv))
     elif args['<command>'] == 'run-script':
-        print(docopt(ip_run_script.__doc__, argv=argv))
+        print(docopt(run_script.__doc__, argv=argv))
     elif args['<command>'] == 'search':
         print(docopt(ip_search.__doc__, argv=argv))
     elif args['<command>'] == 'set-script':
-        print(docopt(ip_set_script.__doc__, argv=argv))
+        print(docopt(set_script.__doc__, argv=argv))
     elif args['<command>'] == 'shrinkwrap':
         print(docopt(ip_shrinkwrap.__doc__, argv=argv))
     elif args['<command>'] == 'tag':

@@ -21,7 +21,11 @@
    Performs diff between two IPs
 
 Usage:
-   mio ip diff <ip a>[@<version a>] <ip b>[@<version b]
+   mio ip diff                                              [<path> ...]
+   mio ip diff --diff=<ip-name>                             [<path> ...]
+   mio ip diff --diff=<version-a> [--diff=<version-b>]      [<path> ...]
+   mio ip diff --diff=<spec-a>    [--diff=<spec-b>]         [<path> ...]
+   mio ip diff [--diff-ignore-all-space] [--diff-name-only] [<path> ...]
 
 Options:
    

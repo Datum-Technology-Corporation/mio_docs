@@ -24,11 +24,15 @@
 Usage: mio ip dedupe [--dry-run]
 
 Options:
-   
+   -d, --dry-run
+      Lists duplicate IPs and the resulting optimized dependency tree, but does
+      not perform any actual operations.
+   -f <type>, --format=<type>
+      Specifies output format: text, yml, xml, csv [default: text]
   
 Examples:
-   
-"""
+   mio ip dedupe -d                  # Print out duplicate IPs only
+   mio ip dedupe -f csv > waste.csv  # Print out duplicate dependencies that were moved to csv file"""
 
 
 

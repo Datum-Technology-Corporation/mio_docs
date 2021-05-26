@@ -17,15 +17,16 @@
 
 
 
-"""Moore.io IP Exec command
-   Executes shell command for IP (ex: run scripts in IP bin directory)
+"""Moore.io IP Init command
+
 
 Usage:
-   mio ip exec <ip> <command>
+   mio init
+   mio init [<name>] [--template=<name> | --args-file=<path>] [--location=<path>]
 
 Options:
    
-  
+
 Examples:
    
 """
@@ -52,7 +53,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_exec - upper_args: " + str(upper_args))
+   logging.debug("ip_init - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_exec - args: " + str(args))
+   logging.debug("ip_init - args: " + str(args))
 ################################################################################

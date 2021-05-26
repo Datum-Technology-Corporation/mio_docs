@@ -21,14 +21,11 @@
    Tries to guess at the likely location of an IP's bug tracker URL or the
    mailto URL
 
-Usage:
-   mio ip bugs <ip>
-
-Options:
-   
+Usage: mio ip bugs [<ip> ...]
   
 Examples:
-   
+   mio ip bugs my_ip
+   mio ip bugs my_ip other_ip some_other_ip
 """
 
 

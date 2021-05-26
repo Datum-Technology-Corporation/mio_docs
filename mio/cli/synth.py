@@ -23,7 +23,7 @@
 Usage: mio synth [<ip>...] [options]
 
 Options:
-   
+   # TBD
   
 Examples:
    
@@ -52,6 +52,6 @@ import logging
 ################################################################################
 def main(upper_args):
    logging.debug("synth - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("synth - args: " + str(args))
 ################################################################################

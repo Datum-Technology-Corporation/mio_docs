@@ -17,15 +17,19 @@
 
 
 
-"""Moore.io IP Explore command
-   Spawns a subshell in the IP directory. If 'command' is specified, it is run
-   and the subshell immediately terminates.
+"""Moore.io Run Script command
+   mio run-script <command> [--if-present] [--silent] [-- <args>]
+   mio run-script <command> [--workspace=<workspace-name>]
+   mio run-script <command> [--workspaces]
 
-Usage:
-   mio ip explore <ip> [-- <command>]
+Usage: mio run-script
+
+Options:
+   
   
 Examples:
-   mio ip explore this_ip  -- grep 'uvm_object' > ~/this_ip_grep_results.txt
+
+Aliases: run, rum, urn
 """
 
 
@@ -50,7 +54,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_explore - upper_args: " + str(upper_args))
+   logging.debug("ip_run_script - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_explore - args: " + str(args))
+   logging.debug("ip_run_script - args: " + str(args))
 ################################################################################

@@ -20,16 +20,20 @@
 """Moore.io IP Pack command
    Creates tarball (.tgz) of IP(s) and dependencies
 
-Usage: mio ip pack [[<@scope>/]<pkg>...] [--dry-run]
+Usage:
+   mio ip pack [[<@scope>/]<pkg> ...] [options]
+   mio ip pack *                      [options]
 
 Options:
-   
+   -d, --dry-run
+      Does everything that pack usually does without actually packing anything.
+      That is, report on what would have gone into the tarball, but nothing
+      more.
   
 Examples:
-   mio ip new ss_mem      --template='mio-rtl-ss'   # Creates a new IP named 'ss_mem' from template 'mio-rtl-ss'
-   mio ip new uvmt_ss_mem --template='mio-dv-ss'    # Creates a new VIP named 'uvmt_ss_mem' from template 'mio-dv-ss'
-   mio ip update                                    # Retrieves latest versions of IP dependencies
-"""
+   mio ip pack diff_eng                 # Pack single IP
+   mio ip pack diff_eng antikythera -d  # Pack multiple IPs in a dry-run
+   mio ip pack *                        # Pack all IPs"""
 
 
 
@@ -54,6 +58,6 @@ import logging
 ################################################################################
 def main(upper_args):
    logging.debug("ip_pack - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("ip_pack - args: " + str(args))
 ################################################################################

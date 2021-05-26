@@ -18,16 +18,14 @@
 
 
 """Moore.io IP Shrinkwrap command
-   
+   Repurposes ip.lock.yml into a publishable ip.shrinkwrap.yml or simply creates
+   a new one. The file created and updated by this command will then take
+   precedence over any other existing or future ip.lock.yml files.
 
-Usage: mio ip shrinkwrap
+Usage: mio ip shrinkwrap [<ip>]
 
-Options:
-   
-  
 Examples:
-   
-"""
+   mio ip shrinkwrap diff_eng"""
 
 
 

@@ -127,16 +127,19 @@ cli_full_command_list = """Full Command List:
       org            Manages organizations
       team           Manages teams
       user           Manages users
+      token          Manages authentication tokens
    
    Automate Moore.io, F&OS and Vendor EDA Tools
       sim            Performs necessary steps to simulate IP
       regr           Runs regression(s) against IP(s)
-      lint           Executes hdl linting tool against IP(s)
-      synth          Executes logic synthesis tool against IP(s)
-      sta            Executes static timing analysis tool against IP(s)
-      formal         Executes formal logic verification tool against IP(s)
+      lint           Executes hdl linting tool(s) against IP(s)
+      synth          Executes logic synthesis tool(s) against IP(s)
+      timing         Executes timing analysis tool(s) against IP(s)
+      formal         Executes formal logic verification tool(s) against IP(s)
+      emul           Launches emulation engine(s) against IP(s)
       hdl-doc        HDL source code documentation generator
-      hdl-refactor   HDL refactorization engine
+      hdl-beautify   HDL source code style policy enforcer
+      hdl-refactor   HDL re-factorization engine
       
    Manage Results and other EDA Tool Outputs
       results        Manages results from EDA tools
@@ -159,7 +162,7 @@ run design simulations and manage results
 automate EDA tools
    lint         Executes hdl linting tool against IP(s)
    synth        Executes logic synthesis tool against IP(s)
-   sta          Executes static timing analysis tool against IP(s)
+   timing       Executes timing analysis tool against IP(s)
    formal       Executes formal logic verification tool against IP(s)
    
 See `mio help <command>` to read about a specific subcommand.
@@ -184,8 +187,10 @@ from . import clean
 from . import completion
 from . import config
 from . import doctor
+from . import emul
 from . import formal
 from . import hdl_doc
+from . import hdl_beautify
 from . import hdl_refactor
 from . import help_search
 from . import help
@@ -197,37 +202,41 @@ from . import org
 from . import regr
 from . import results
 from . import sim
-from . import sta
+from . import timing
 from . import synth
 from . import team
-#from . import tutorial
 from . import user
 from . import vcs
 from . import ip_access
 from . import ip_owner
 from . import ip_bugs
-#from . import ip_ci
+from . import ip_ci
+from . import ip_copy
 from . import ip_dedupe
 from . import ip_deprecate
 from . import ip_diff
 from . import ip_docs
 from . import ip_edit
-from . import ip_exec
+from . import ip_cache
 from . import ip_explain
 from . import ip_explore
 from . import ip_fund
 from . import ip_hook
+from . import ip_id
+from . import ip_init
 from . import ip_install
 from . import ip_integrate
-from . import ip_list
+from . import ip_ls
+from . import ip_move
 from . import ip_outdated
 from . import ip_pack
 from . import ip_prune
 from . import ip_publish
+from . import ip_push
 from . import ip_repo
-from . import ip_run_script
+from . import run_script
 from . import ip_search
-from . import ip_set_script
+from . import set_script
 from . import ip_shrinkwrap
 from . import ip_tag
 from . import ip_test
@@ -253,6 +262,15 @@ def process_ip_args(subcommand):
    elif subcommand == 'bugs':
       print(ip_bugs.__doc__)
       exit()
+   elif subcommand == 'cache':
+      print(ip_cache.__doc__)
+      exit()
+   elif subcommand == 'ci':
+      print(ip_ci.__doc__)
+      exit()
+   elif subcommand == 'copy':
+      print(ip_copy.__doc__)
+      exit()
    elif subcommand == 'dedupe':
       print(ip_dedupe.__doc__)
       exit()
@@ -268,9 +286,6 @@ def process_ip_args(subcommand):
    elif subcommand == 'edit':
       print(ip_edit.__doc__)
       exit()
-   elif subcommand == 'exec':
-      print(ip_exec.__doc__)
-      exit()
    elif subcommand == 'explain':
       print(ip_explain.__doc__)
       exit()
@@ -283,6 +298,12 @@ def process_ip_args(subcommand):
    elif subcommand == 'hook':
       print(ip_hook.__doc__)
       exit()
+   elif subcommand == 'id':
+      print(ip_id.__doc__)
+      exit()
+   elif subcommand == 'init':
+      print(ip_init.__doc__)
+      exit()
    elif subcommand == 'install':
       print(ip_install.__doc__)
       exit()
@@ -290,10 +311,16 @@ def process_ip_args(subcommand):
       print(ip_integrate.__doc__)
       exit()
    elif subcommand == 'ls':
-      print(ip_list.__doc__)
+      print(ip_ls.__doc__)
+      exit()
+   elif subcommand == 'move':
+      print(ip_move.__doc__)
       exit()
    elif subcommand == 'outdated':
       print(ip_outdated.__doc__)
+      exit()
+   elif subcommand == 'owner':
+      print(ip_owner.__doc__)
       exit()
    elif subcommand == 'pack':
       print(ip_pack.__doc__)
@@ -304,17 +331,14 @@ def process_ip_args(subcommand):
    elif subcommand == 'publish':
       print(ip_publish.__doc__)
       exit()
+   elif subcommand == 'push':
+      print(ip_push.__doc__)
+      exit()
    elif subcommand == 'repo':
       print(ip_repo.__doc__)
       exit()
-   elif subcommand == 'run-script':
-      print(ip_run_script.__doc__)
-      exit()
    elif subcommand == 'search':
       print(ip_search.__doc__)
-      exit()
-   elif subcommand == 'set-script':
-      print(ip_set_script.__doc__)
       exit()
    elif subcommand == 'shrinkwrap':
       print(ip_shrinkwrap.__doc__)
@@ -374,8 +398,14 @@ def main(upper_args):
       elif command == 'doctor':
          print(doctor.__doc__)
          exit()
+      elif command == 'emul':
+         print(emul.__doc__)
+         exit()
       elif command == 'formal':
          print(formal.__doc__)
+         exit()
+      elif command == 'hdl-beautify':
+         print(hdl_beautify.__doc__)
          exit()
       elif command == 'hdl-doc':
          print(hdl_doc.__doc__)
@@ -393,11 +423,11 @@ def main(upper_args):
          print(init.__doc__)
          exit()
       elif command == 'ip':
-         if '<subcommand>' in args:
-            process_ip_args(args['<subcommand>'])
-         else:
+         if '<subcommand>' not in args or args['<subcommand>'] == None:
             print(ip.__doc__)
             exit()
+         else:
+            process_ip_args(args['<subcommand>'])
       elif command == 'lint':
          print(lint.__doc__)
          exit()
@@ -413,17 +443,23 @@ def main(upper_args):
       elif command == 'results':
          print(results.__doc__)
          exit()
+      elif command == 'run-script':
+         print(run_script.__doc__)
+         exit()
+      elif command == 'set-script':
+         print(set_script.__doc__)
+         exit()
       elif command == 'sim':
          print(sim.__doc__)
-         exit()
-      elif command == 'sta':
-         print(sta.__doc__)
          exit()
       elif command == 'synth':
          print(synth.__doc__)
          exit()
       elif command == 'team':
          print(team.__doc__)
+         exit()
+      elif command == 'timing':
+         print(timing.__doc__)
          exit()
       elif command == 'user':
          print(user.__doc__)

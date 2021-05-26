@@ -17,17 +17,24 @@
 
 
 
-"""Moore.io IP Run Script command
-   
+"""Moore.io IP Cache command
+   Used to add, list, or clean the mio IP cache folder:
+   * `update`: Add the specified IPs to the local cache. This command is primarily
+     intended to be used internally by mio, but it can provide a way to add data
+     to the local installation cache explicitly.
+   * `clean`: Delete all data out of the cache folder. Note that this is
+     typically unnecessary, as mio's cache is auto-managed.
+   * `verify`: Verify the contents of the cache folder, garbage collecting any
+     unneeded data, and verifying the integrity of the cache index and all
+     cached data.
 
-Usage: mio ip run-script 
+Usage:
+mio ip cache update [--force]
+mio ip cache clean
+mio ip cache verify
 
 Options:
-   
-  
-Examples:
-   
-"""
+   -f, --force   Performs clean before updating the cache"""
 
 
 
@@ -51,7 +58,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_run_script - upper_args: " + str(upper_args))
+   logging.debug("ip_exec - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_run_script - args: " + str(args))
+   logging.debug("ip_exec - args: " + str(args))
 ################################################################################

@@ -23,10 +23,12 @@
 Usage:
    mio ip install [--global] [@<scope>/]<name>[@<semver>]               
    mio ip install [--global] <name> --repo=<uri> --location=<path>      
-   mio ip install <name>[@<version>] --location=<path>                  Installs local IP into global IP location
+   mio ip install            <name>[@<version>]  --location=<path>   Installs local IP into global IP location
 
 Options:
-   
+   -g       , --global
+   -r <uri> , --repo=<uri>
+   -l <path>, --location=<path>
   
 Examples:
    

@@ -18,10 +18,9 @@
 
 
 """Moore.io IP Version command
-   
+   Move IP to new version.
 
-Usage:
-   mio ip version
+Usage: mio ip [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]
 
 Options:
    

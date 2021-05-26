@@ -18,16 +18,17 @@
 
 
 """Moore.io IP Deprecate command
-   Updates registry entry for IP (not compatible with workspace IPs)
+   Updates registry entry for IP.
 
-Usage: mio ip deprecate <ip>[@<version range>] <message>
+Usage: mio ip deprecate <ip>[@<version range>] [options] <message>
 
 Options:
-   
+   -r, --restore   Un-deprecates IP (if was deprecated)
   
 Examples:
-   
-"""
+   mio ip deprecate my_ip@"< 0.2.3" "Critical bug fixed in v0.2.3"
+   mio ip deprecate my_other_ip@1.x "1.x is no longer supported"
+   mio ip deprecate my_other_ip@1.x --restore "Oups, user error"""
 
 
 
@@ -51,7 +52,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_deprecated - upper_args: " + str(upper_args))
+   logging.debug("ip_deprecate - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_deprecated - args: " + str(args))
+   logging.debug("ip_deprecate - args: " + str(args))
 ################################################################################

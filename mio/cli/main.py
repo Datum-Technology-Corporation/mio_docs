@@ -28,6 +28,7 @@ from . import clean
 from . import completion
 from . import config
 from . import doctor
+from . import emul
 from . import formal
 from . import hdl_doc
 from . import hdl_refactor
@@ -40,8 +41,10 @@ from . import new
 from . import org
 from . import regr
 from . import results
+from . import run_script
+from . import set_script
 from . import sim
-from . import sta
+from . import timing
 from . import synth
 from . import team
 from . import user
@@ -164,6 +167,8 @@ def process_command(args, argv, debug):
         print(docopt(config.__doc__, argv=argv))
     elif args['<command>'] == 'doctor':
         print(docopt(doctor.__doc__, argv=argv))
+    elif args['<command>'] == 'emulate':
+        print(docopt(emul.__doc__, argv=argv))
     elif args['<command>'] == 'formal':
         print(docopt(formal.__doc__, argv=argv))
     elif args['<command>'] == 'hdl-doc':
@@ -188,14 +193,18 @@ def process_command(args, argv, debug):
         print(docopt(regr.__doc__, argv=argv))
     elif args['<command>'] == 'results':
         print(docopt(results.__doc__, argv=argv))
+    elif args['<command>'] == 'run-script':
+        print(docopt(run_script.__doc__, argv=argv))
+    elif args['<command>'] == 'set-script':
+        print(docopt(set_script.__doc__, argv=argv))
     elif args['<command>'] == 'sim':
         print(docopt(sim.__doc__, argv=argv))
-    elif args['<command>'] == 'sta':
-        print(docopt(sta.__doc__, argv=argv))
     elif args['<command>'] == 'synth':
         print(docopt(synth.__doc__, argv=argv))
     elif args['<command>'] == 'team':
         print(docopt(team.__doc__, argv=argv))
+    elif args['<command>'] == 'timing':
+        print(docopt(timing.__doc__, argv=argv))
     elif args['<command>'] == 'user':
         print(docopt(user.__doc__, argv=argv))
     elif args['<command>'] == 'vcs':

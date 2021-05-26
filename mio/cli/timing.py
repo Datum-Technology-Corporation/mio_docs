@@ -17,13 +17,14 @@
 
 
 
-"""Moore.io IP Set Script command
-   
+"""Moore.io Timing command
+   Launches Timing Analysis tool against target IPs.
 
-Usage: mio ip set-script
+Usage:  mio timing [<ip>...] [options]
+  
 
 Options:
-   
+   # TBD
   
 Examples:
    
@@ -51,7 +52,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("ip_set_script - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("ip_set_script - args: " + str(args))
+   logging.debug("sta - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=False)
+   logging.debug("sta - args: " + str(args))
 ################################################################################

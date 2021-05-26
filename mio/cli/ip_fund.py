@@ -18,17 +18,18 @@
 
 
 """Moore.io IP Fund command
-   Retrieves information on how to fund the Project dependencies.
+   Retrieves information on how to fund the Project dependencies. If no IP name
+   is provided, it will list all dependencies that are looking for funding in a
+   tree structure, listing the type of funding and the url to visit. If IPs are
+   provided, then it tries to open each funding url using the --browser config
+   param; if there are multiple funding sources for the package, each will be
+   opened.
 
-Usage:
-   mio ip fund [<ip>]
-
-Options:
-   
+Usage: mio ip fund [<ip> ...]
   
 Examples:
-   
-"""
+   mio ip fund                  # Open all Project IPs with funding information
+   mio ip fund my_favorite_ip   # Open funding information (if present) for a specific IP"""
 
 
 

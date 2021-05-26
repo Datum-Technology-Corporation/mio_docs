@@ -18,15 +18,15 @@
 
 
 """Moore.io IP Repo command
-   Opens IP repository page using default app for given VCS
+   Opens IP repository page using default app for given VCS.
 
-Usage: mio ip repo [<ip> [<ip> ...]]
-
-Options:
-   
+Usage:
+   mio ip repo [[@<scope>]/<ip> ...]
+   mio ip repo *
   
 Examples:
-   
+   mio ip repo diff_eng  # View repository for a single IP
+   mio ip repo *         # View repositories for all Project IPs
 """
 
 

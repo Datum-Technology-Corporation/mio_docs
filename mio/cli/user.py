@@ -21,17 +21,20 @@
    Manages users
 
 Usage:
-  mio user add                                                    
+  mio user add
+  mio user login
   mio user logout                                                 
-  mio user profile get [--json|--parseable] [<property>]          
-  mio user profile set [--json|--parseable] <property> <value>    
-  mio user profile set password                                   
-  mio user profile enable-2fa [auth-and-writes|auth-only]         
-  mio user profile disable-2fa                                    
-  mio user whoami                                                 
-  mio user token                                                 
+  mio user profile get [<property>]
+  mio user profile set <property> <value>
+  mio user profile set password
+  mio user profile enable-2fa [auth-and-writes|auth-only]
+  mio user profile disable-2fa
+  mio user token
+  mio user whoami [--registry=<url>]
 
 Options:
+   -r <url>, --registry=<url>
+   
    
   
 Examples:

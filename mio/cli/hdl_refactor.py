@@ -18,7 +18,7 @@
 
 
 """Moore.io HDL Refactor command
-   Safe performs operations on HDL source code.
+   Safely performs operations on HDL source code.
 
 Usage:
    mio hdl-refactor add        [options]

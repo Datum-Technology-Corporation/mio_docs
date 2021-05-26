@@ -17,17 +17,16 @@
 
 
 
-"""Moore.io STA command
-   Launches Static Timing Analysis tool against target IPs
+"""Moore.io Emul command
+   Launches emulation engine(s) against against IP(s).
 
-Usage:  mio sta [<ip>...] [options]
-  
+Usage: mio emul [<ip>...] [options]
 
 Options:
-   
-  
+   # TBD
+
 Examples:
-   
+   mio emul my_pcie_rc my_pcie_ep
 """
 
 
@@ -52,7 +51,7 @@ import logging
 # ENTRY POINT
 ################################################################################
 def main(upper_args):
-   logging.debug("sta - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("sta - args: " + str(args))
+   logging.debug("emul - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=False)
+   logging.debug("emul - args: " + str(args))
 ################################################################################

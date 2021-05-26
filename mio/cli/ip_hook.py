@@ -19,20 +19,34 @@
 
 """Moore.io IP Hook command
    Allows you to manage IP hooks, including adding, removing, listing, and
-   updating.
+   updating. Hooks allow you to configure URL endpoints that will be notified
+   whenever a change happens to any of the supported entity types. Three
+   different types of entities can be watched by hooks: IPs, Owners, and Scopes.
+   
+   * To create an IP hook, simply reference the IP name.
+   * To create an owner hook, prefix the owner name with ~ (as in, `~youruser` ).
+   * To create a scope hook, prefix the scope name with  @ (as in, `@yourscope`).
+
+   The hook id used by `update` and `rm` are the IDs listed in `mio ip hook ls`
+   for that particular hook.
+
+   The shared secret will be sent along to the URL endpoint so you can verify
+   the request came from your own configured hook.
 
 Usage:
-   mio ip hook ls [<ip>]                      
-   mio ip hook add <entity> <url> <secret>   
-   mio ip hook update <id> <url> [<secret>]  
-   mio ip hook rm <id>                        
-
-Options:
+   mio ip hook ls    [<ip>]
+   mio ip hook add <entity> <url>  <secret>
+   mio ip hook update <id>  <url> [<secret>]
+   mio ip hook rm     <id>
    
-  
 Examples:
-   
-"""
+   mip ip hook add diff_eng  https://example.com/ my-shared-secret   # Add a hook to watch an IP for changes
+   mip ip hook add ~cbabbage https://example.com/ my-shared-secret   # Add a hook to watch IPs belonging to the user cbabbage
+   mip ip hook add @mio      https://example.com/ my-shared-secret   # Add a hook to watch IPs in the scope @mio
+   mip ip hook ls                                                    # List all your active hooks
+   mip ip hook ls diff_eng                                           # List your active hooks for the diff_eng IP
+   mip ip hook update id-deadbeef https://my-new-website.here/       # Update an existing hook's url
+   mip ip hook rm     id-deadbeef                                    # Remove a hook"""
 
 
 

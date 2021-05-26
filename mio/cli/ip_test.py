@@ -19,16 +19,17 @@
 
 """Moore.io IP Test comm
    Runs the IP's specified testing section. Used primarily for contributing
-   computing resources to FOS IPs
+   computing resources to FOS IPs.
 
 Usage:
-   mio ip test 
+   mio ip test ls  <ip>                            List all test suites
+   mio ip test run <ip> <testing level> [options]  Run test suite
 
 Options:
-   
+   TBD
   
 Examples:
-   
+   TBD
 """
 
 
