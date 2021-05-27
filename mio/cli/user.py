@@ -34,7 +34,7 @@ Usage:
 
 Options:
    -r <url>, --registry=<url>
-   
+      Base URL of the npm registry
    
   
 Examples:

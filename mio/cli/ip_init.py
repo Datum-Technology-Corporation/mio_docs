@@ -18,18 +18,29 @@
 
 
 """Moore.io IP Init command
+   Creates an `ip.yml` file for a new IP.
 
-
-Usage:
-   mio init
-   mio init [<name>] [--template=<name> | --args-file=<path>] [--location=<path>]
+Usage: mio ip init [<generator>] [<@scope>/][<name>] [options] -- <arguments>
 
 Options:
+   -s, --skip-questions
+      Skips the questionnaire
    
+   -w <path>, --work-dir=<path>
+      Specifies the directory in which the IP will be initialized
+   
+   -r <url>, --registry=<url>
+      Specifies the registry to which the new IP belongs
+   
+   -f <path>, --args-file=<path>
+      Specifies an argument file for the questionnaire (in-line arguments take
+      precedence)
 
 Examples:
-   
-"""
+   mio ip init                                                             # Create ip.yml through stock questionnaire
+   mio ip init @my-scope/my_ip                                             # Init a scoped and named IP
+   mio ip init my-generator -w ./some_path --skip-questions                # Use a generator but skip the questions and use a custom path
+   mio ip init @my-scope/my_ip --args-file=./my_args.txt -- -a --b=1 -c=2  # Use stock behavior, but answer questions with an arg file and inline arguments"""
 
 
 

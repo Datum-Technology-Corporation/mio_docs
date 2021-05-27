@@ -37,7 +37,8 @@
    this cache. See `mio ip cache` for more on how the cache works.
 
    `prefer-online`
-   Forces staleness checks for cached searches, making the cli look for updates immediately even for fresh search results.
+   Forces staleness checks for cached searches, making the cli look for updates
+   immediately even for fresh search results.
 
    `prefer-offline`
    Bypasses staleness checks for cached searches. Missing data will still be
@@ -75,8 +76,8 @@ Options:
       Omit IP description in the search results.
 
 Examples:
-   mio ip search 'diff*_eng*'
-   mio ip search --long -e 'vmm ovm' '*uvm*eth*'
+   mio ip search '/my*_ip*/'
+   mio ip search --long -e 'exclusion1 exclusion2 ' '/*some*ip*/'
    mip ip search --format=xml '=mbabbage'"""
 
 

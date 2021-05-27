@@ -29,32 +29,41 @@
    * `2fa-required` / `2fa-not-required`: Configure whether an IP requires that
      anyone publishing it have two-factor authentication enabled on their
      account.
-   * `ls-packages`: Show all of the IPs a user or a team is able to access, along
-     with the access level, except for read-only public IPs (it won't print the
-     whole registry listing)
+   * `ls-ip`: Show all of the IPs a user or a team is able to access, along with
+     the access level, except for read-only public IPs (it won't print the whole
+     registry listing)
    * `ls-collaborators`: Show all of the access privileges for an IP. Will only
      show permissions for IPs to which you have at least read access. If <user>
      is passed in, the list is filtered only to teams that user happens to
      belong to.
-   * `edit`: Set the access privileges for an IP at once using $EDITOR.
+   * `edit`: Set the access privileges for an IP using $EDITOR.
 
 Usage:
-   mio ip access public                                    [<ip>]
-   mio ip access restricted                                [<ip>]
-   mio ip access grant <read-only|read-write> <scope:team> [<ip>]
-   mio ip access revoke                       <scope:team> [<ip>]
-   mio ip access 2fa-required                              [<ip>]
-   mio ip access 2fa-not-required                          [<ip>]
-   mio ip access edit                                      [<ip>]
-   mio ip access ls-collaborators                          [<ip> [<user>]]
-   mio ip access ls-ips [<user>|<scope>|<scope:team>]
+   mio ip access public                                    [<ip>] [options]
+   mio ip access restricted                                [<ip>] [options]
+   mio ip access grant <read-only|read-write> <scope:team> [<ip>] [options]
+   mio ip access revoke                       <scope:team> [<ip>] [options]
+   mio ip access 2fa-required                              [<ip>] [options]
+   mio ip access 2fa-not-required                          [<ip>] [options]
+   mio ip access edit                                      [<ip>] [options]
+   mio ip access ls-collaborators [<ip> [<user>]]                 [options]
+   mio ip access ls-ip            [<user>|<scope>|<scope:team>]   [options]
 
 Options:
+   -r <url>, --registry=<url>
+      Specifies the registry to search for IPs.
    
+   -o <pwd>, --otp=<pwd>
+      If you have two-factor authentication enabled, you will need to include a
+      one-time password on the command line
   
 Examples:
-   
-"""
+   mio ip access public my_ip                                   # Make 'my_ip' a public IP
+   mio ip access grant  read-write my_team my_ip                # Give read/write access to 'my_team' for 'my_ip'
+   mio ip access revoke other_team my_ip                        # Revoke all access to 'other_team' for 'my_ip'
+   mio ip access 2fa-required my_ip -r https://my-registry.com  # Require 2-factor authentication for my_ip in a custom registry
+   mio ip access edit my_ip                                     # Open access rights for 'my_ip' in $EDITOR
+   mio ip access ls-ip mbabbage                                 # Lists IPs user 'mbabbage' has access to"""
 
 
 
@@ -79,6 +88,6 @@ import logging
 ################################################################################
 def main(upper_args):
    logging.debug("ip_access - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("ip_access - args: " + str(args))
 ################################################################################
