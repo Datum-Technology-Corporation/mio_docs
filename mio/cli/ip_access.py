@@ -1,19 +1,16 @@
-## 
-## Copyright 2021 Datum Technology Corporation
-## SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-## 
-## Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may
-## not use this file except in compliance with the License, or, at your option,
-## the Apache License version 2.0. You may obtain a copy of the License at
-## 
-##     https://solderpad.org/licenses/SHL-2.1/
-## 
-## Unless required by applicable law or agreed to in writing, any work
-## distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-## WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-## License for the specific language governing permissions and limitations
-## under the License.
-## 
+#
+# Copyright 2021 Datum Technology Corporation
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
+# with the License, or, at your option, the Apache License version 2.0. You may obtain a copy of the License at
+#
+#                                       https://solderpad.org/licenses/SHL-2.1/
+#
+# Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
+# an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations under the License.
+#
 
 
 
@@ -63,7 +60,7 @@ Examples:
    mio ip access revoke other_team my_ip                        # Revoke all access to 'other_team' for 'my_ip'
    mio ip access 2fa-required my_ip -r https://my-registry.com  # Require 2-factor authentication for my_ip in a custom registry
    mio ip access edit my_ip                                     # Open access rights for 'my_ip' in $EDITOR
-   mio ip access ls-ip mbabbage                                 # Lists IPs user 'mbabbage' has access to"""
+   mio ip access ls-ip cbabbage                                 # Lists IPs user 'cbabbage' has access to"""
 
 
 

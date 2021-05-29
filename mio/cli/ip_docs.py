@@ -19,11 +19,11 @@
 
 """Moore.io IP Docs command
    Opens IP documentation. Use
-   `ip config set default-editor-<extension> <editor>` to change the default
-   program in which documentation will be viewed.
+   `ip config set default-editor-<extension> <editor>` to change the default program in which documentation will be
+   viewed.
 
 Usage:
-   mio ip docs [<ip> ...] [options]
+   mio ip docs [[@<scope>]/<ip> ...] [options]
    mio ip docs *          [options]
 
 Options:
@@ -34,10 +34,9 @@ Options:
 Examples:
    mio ip docs                          # Open up html documentation for default IP
    mio ip docs --format=man             # View man help pages for the default IP
-   mio ip docs some_ip                  # View
+   mio ip docs some_ip                  # View documents for IP
    mio ip docs this_ip that_ip -f pdf   # Launch default PDF viewer for 2 IPs
-   mio ip docs * --format=html          # Open up documentation for all Project IPs in browser
-"""
+   mio ip docs * --format=html          # Open up documentation for all Project IPs in browser"""
 
 
 

@@ -1,19 +1,16 @@
-## 
-## Copyright 2021 Datum Technology Corporation
-## SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-## 
-## Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may
-## not use this file except in compliance with the License, or, at your option,
-## the Apache License version 2.0. You may obtain a copy of the License at
-## 
-##     https://solderpad.org/licenses/SHL-2.1/
-## 
-## Unless required by applicable law or agreed to in writing, any work
-## distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-## WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-## License for the specific language governing permissions and limitations
-## under the License.
-## 
+#
+# Copyright 2021 Datum Technology Corporation
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
+# with the License, or, at your option, the Apache License version 2.0. You may obtain a copy of the License at
+#
+#                                       https://solderpad.org/licenses/SHL-2.1/
+#
+# Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
+# an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations under the License.
+#
 
 
 
@@ -127,7 +124,6 @@ cli_full_command_list = """Full Command List:
       org            Manages organizations
       team           Manages teams
       user           Manages users
-      token          Manages authentication tokens
    
    Automate Moore.io, F&OS and Vendor EDA Tools
       sim            Performs necessary steps to simulate IP
@@ -225,14 +221,12 @@ from . import ip_hook
 from . import ip_id
 from . import ip_init
 from . import ip_install
-from . import ip_integrate
 from . import ip_ls
 from . import ip_move
 from . import ip_outdated
 from . import ip_pack
 from . import ip_prune
 from . import ip_publish
-from . import ip_push
 from . import ip_repo
 from . import run_script
 from . import ip_search
@@ -307,9 +301,6 @@ def process_ip_args(subcommand):
    elif subcommand == 'install':
       print(ip_install.__doc__)
       exit()
-   elif subcommand == 'integrate':
-      print(ip_integrate.__doc__)
-      exit()
    elif subcommand == 'ls':
       print(ip_ls.__doc__)
       exit()
@@ -331,9 +322,6 @@ def process_ip_args(subcommand):
    elif subcommand == 'publish':
       print(ip_publish.__doc__)
       exit()
-   elif subcommand == 'push':
-      print(ip_push.__doc__)
-      exit()
    elif subcommand == 'repo':
       print(ip_repo.__doc__)
       exit()
@@ -352,11 +340,11 @@ def process_ip_args(subcommand):
    elif subcommand == 'uninstall':
       print(ip_uninstall.__doc__)
       exit()
-   elif subcommand == 'unpublish':
-      print(ip_unpublish.__doc__)
-      exit()
    elif subcommand == 'update':
       print(ip_update.__doc__)
+      exit()
+   elif subcommand == 'unpublish':
+      print(ip_unpublish.__doc__)
       exit()
    elif subcommand == 'version':
       print(ip_version.__doc__)

@@ -1,19 +1,16 @@
-## 
-## Copyright 2021 Datum Technology Corporation
-## SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-## 
-## Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may
-## not use this file except in compliance with the License, or, at your option,
-## the Apache License version 2.0. You may obtain a copy of the License at
-## 
-##     https://solderpad.org/licenses/SHL-2.1/
-## 
-## Unless required by applicable law or agreed to in writing, any work
-## distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-## WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-## License for the specific language governing permissions and limitations
-## under the License.
-## 
+#
+# Copyright 2021 Datum Technology Corporation
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
+# with the License, or, at your option, the Apache License version 2.0. You may obtain a copy of the License at
+#
+#                                       https://solderpad.org/licenses/SHL-2.1/
+#
+# Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
+# an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations under the License.
+#
 
 
 
@@ -63,7 +60,6 @@ from . import ip_hook
 from . import ip_id   #   (from `cargo pkgid`)
 from . import ip_init   # Creates ip.yml, same as `npm init`, recommended that users use `mio new` (which itself calls `ip init`)
 from . import ip_install
-from . import ip_integrate
 from . import ip_ls
 from . import ip_move   # Move/rename IP around project structure (if many dirs have IPs) or to another project altogether (also implements `cargo vendor`)
 from . import ip_outdated
@@ -71,7 +67,6 @@ from . import ip_owner
 from . import ip_pack
 from . import ip_prune
 from . import ip_publish
-from . import ip_push   # If IP is public and under known VCS type, will emit 'pull request' against IP repo
 from . import ip_repo
 from . import run_script
 from . import ip_search
@@ -101,6 +96,10 @@ def main(up_args):
         print(docopt(ip_bugs.__doc__, argv=argv))
     elif args['<command>'] == 'cache':
         print(docopt(ip_cache.__doc__, argv=argv))
+    elif args['<command>'] == 'ci':
+        print(docopt(ip_ci.__doc__, argv=argv))
+    elif args['<command>'] == 'copy':
+        print(docopt(ip_copy.__doc__, argv=argv))
     elif args['<command>'] == 'dedupe':
         print(docopt(ip_dedupe.__doc__, argv=argv))
     elif args['<command>'] == 'deprecate':
@@ -119,12 +118,16 @@ def main(up_args):
         print(docopt(ip_fund.__doc__, argv=argv))
     elif args['<command>'] == 'hook':
         print(docopt(ip_hook.__doc__, argv=argv))
+    elif args['<command>'] == 'id':
+        print(docopt(ip_id.__doc__, argv=argv))
+    elif args['<command>'] == 'init':
+        print(docopt(ip_init.__doc__, argv=argv))
     elif args['<command>'] == 'install':
         print(docopt(ip_install.__doc__, argv=argv))
-    elif args['<command>'] == 'integrate':
-        print(docopt(ip_integrate.__doc__, argv=argv))
     elif args['<command>'] == 'ls':
         print(docopt(ip_ls.__doc__, argv=argv))
+    elif args['<command>'] == 'move':
+        print(docopt(ip_move.__doc__, argv=argv))
     elif args['<command>'] == 'outdated':
         print(docopt(ip_outdated.__doc__, argv=argv))
     elif args['<command>'] == 'owner':

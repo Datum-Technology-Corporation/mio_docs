@@ -1,19 +1,16 @@
-## 
-## Copyright 2021 Datum Technology Corporation
-## SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-## 
-## Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may
-## not use this file except in compliance with the License, or, at your option,
-## the Apache License version 2.0. You may obtain a copy of the License at
-## 
-##     https://solderpad.org/licenses/SHL-2.1/
-## 
-## Unless required by applicable law or agreed to in writing, any work
-## distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-## WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-## License for the specific language governing permissions and limitations
-## under the License.
-## 
+#
+# Copyright 2021 Datum Technology Corporation
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
+# with the License, or, at your option, the Apache License version 2.0. You may obtain a copy of the License at
+#
+#                                       https://solderpad.org/licenses/SHL-2.1/
+#
+# Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
+# an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations under the License.
+#
 
 
 
@@ -21,17 +18,17 @@
    Adds, removes, or enumerates distribution tags on an IP.
 
 Usage:
-   mio ip tag add [options]  <ip>@<version> [<tag>]  Create new tag for IP and version
-   mio ip tag rm  [options]  <ip>            <tag>   Remove existing tag
-   mio ip tag ls  [options] [<ip>]                   List existing tag(s)
+   mio ip tag add [@<scope>/]<ip>@<version> [<tag>] [options]  Create new tag for IP and version
+   mio ip tag rm  [@<scope>/]<ip>            <tag>  [options]  Remove existing tag
+   mio ip tag ls  [@<scope>/]<ip>]                  [options]  List existing tag(s)
 
 Options:
-   -o <pwd>, --otp=<pwd>  If you have two-factor authentication enabled, you
-   will need to include a one-time password on the command line
+   -o <pwd>, --otp=<pwd>
+      If you have two-factor authentication enabled, you will need to include a one-time password on the command line
   
 Examples:
-   mio ip tag add diff_eng@1.0.0 stable
-   mio ip tag rm  diff_eng       beta"""
+   mio ip tag add my_ip@1.0.0 stable
+   mio ip tag rm  my_ip       beta"""
 
 
 

@@ -30,6 +30,7 @@ from . import config
 from . import doctor
 from . import emul
 from . import formal
+from . import hdl_beautify
 from . import hdl_doc
 from . import hdl_refactor
 from . import help_search
@@ -171,6 +172,8 @@ def process_command(args, argv, debug):
         print(docopt(emul.__doc__, argv=argv))
     elif args['<command>'] == 'formal':
         print(docopt(formal.__doc__, argv=argv))
+    elif args['<command>'] == 'hdl-beautify':
+        print(docopt(hdl_beautify.__doc__, argv=argv))
     elif args['<command>'] == 'hdl-doc':
         print(docopt(hdl_doc.__doc__, argv=argv))
     elif args['<command>'] == 'hdl-refactor':
