@@ -13,21 +13,17 @@
 #######################################################################################################################
 
 
-"""Moore.io VCS command
-   Automates version control system tasks
+"""Moore.io HDL-Style command
+   Enforces SystemVerilog/VHDL code style policies without affecting functionality.
 
 Usage:
-  mio vcs populate   
-  mio vcs bless      
-  mio vcs sync       
-  mio vcs push       
+   mio hdl-style [<ip>]  [options]
 
 Options:
-   TBD
+   # TBD
   
 Examples:
-   TBD
-"""
+   # TBD"""
 
 
 #######################################################################################################################
@@ -39,19 +35,10 @@ import logging
 
 
 #######################################################################################################################
-# FUNCTIONS
-#######################################################################################################################
-def parse_args(args):
-   print(str(args))
-#######################################################################################################################
-
-
-#######################################################################################################################
 # ENTRY POINT
 #######################################################################################################################
 def main(upper_args):
-   logging.debug("vcs - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
-   logging.debug("vcs - args: " + str(args))
-   parse_args(args)
+   logging.debug("hdl_style - upper_args: " + str(upper_args))
+   args = docopt(__doc__, argv=upper_args, options_first=False)
+   logging.debug("hdl_style - args: " + str(args))
 #######################################################################################################################

@@ -1,7 +1,7 @@
-#
+#######################################################################################################################
 # Copyright 2021 Datum Technology Corporation
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-#
+#######################################################################################################################
 # Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
 # with the License, or, at your option, the Apache License version 2.0. You may obtain a copy of the License at
 #
@@ -10,8 +10,7 @@
 # Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
 # an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
 # specific language governing permissions and limitations under the License.
-#
-
+#######################################################################################################################
 
 
 """Moore.io Help command
@@ -23,7 +22,6 @@ Examples:
    mio help sim
    mio help ip install
    mio help mio"""
-
 
 
 logo = """                              ███╗   ███╗ ██████╗  ██████╗ ██████╗ ███████╗   ██╗ ██████╗
@@ -58,7 +56,7 @@ cli_options = """Options:
       given, each subsequent non-absolute -C <path> is interpreted relative to the preceding -C <path>.  If <path> is
       present but empty, e.g. -C "", then the current working directory is left unchanged.
    
-   -c <path>=<value>, --config=<name>=<value>
+   -c <name>=<value>, --config=<name>=<value>
       Pass a configuration parameter to the command.  The value given will override values from configuration files.
       The <name> is expected in the same format as listed by `mio config` (subkeys separated by dots).
       
@@ -118,9 +116,10 @@ cli_full_command_list = """Full Command List:
       timing         Executes timing analysis tool(s) against IP(s)
       formal         Executes formal logic verification tool(s) against IP(s)
       emul           Launches emulation engine(s) against IP(s)
+      hdl-connect    HDL source code port connection/disconnection
       hdl-doc        HDL source code documentation generator
-      hdl-beautify   HDL source code style policy enforcer
       hdl-refactor   HDL re-factorization engine
+      hdl-style      HDL source code style policy enforcer
       
    Manage Results and other EDA Tool Outputs
       results        Manages results from EDA tools
@@ -159,9 +158,9 @@ mio_text = f"""{logo}
 
 {cli_full_command_list}"""
 
-################################################################################
+#######################################################################################################################
 # IMPORTS
-################################################################################
+#######################################################################################################################
 from docopt import docopt
 import logging
 from . import clean
@@ -170,8 +169,9 @@ from . import config
 from . import doctor
 from . import emul
 from . import formal
+from . import hdl_connect
 from . import hdl_doc
-from . import hdl_beautify
+from . import hdl_style
 from . import hdl_refactor
 from . import help_search
 from . import help
@@ -203,7 +203,6 @@ from . import ip_explain
 from . import ip_explore
 from . import ip_fund
 from . import ip_hook
-from . import ip_id
 from . import ip_init
 from . import ip_install
 from . import ip_ls
@@ -224,13 +223,12 @@ from . import ip_unpublish
 from . import ip_update
 from . import ip_version
 from . import ip_view
-################################################################################
+#######################################################################################################################
 
 
-
-################################################################################
+#######################################################################################################################
 # FUNCTIONS
-################################################################################
+#######################################################################################################################
 def process_ip_args(subcommand):
    if subcommand == 'access':
       print(ip_access.__doc__)
@@ -276,9 +274,6 @@ def process_ip_args(subcommand):
       exit()
    elif subcommand == 'hook':
       print(ip_hook.__doc__)
-      exit()
-   elif subcommand == 'id':
-      print(ip_id.__doc__)
       exit()
    elif subcommand == 'init':
       print(ip_init.__doc__)
@@ -339,13 +334,12 @@ def process_ip_args(subcommand):
       exit()
    else:
       exit("No such subcommand for `mio ip`")
-################################################################################
+#######################################################################################################################
 
 
-
-################################################################################
+#######################################################################################################################
 # ENTRY POINT
-################################################################################
+#######################################################################################################################
 def main(upper_args):
    logging.debug("help - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args)
@@ -377,14 +371,17 @@ def main(upper_args):
       elif command == 'formal':
          print(formal.__doc__)
          exit()
-      elif command == 'hdl-beautify':
-         print(hdl_beautify.__doc__)
+      elif command == 'hdl-connect':
+         print(hdl_connect.__doc__)
          exit()
       elif command == 'hdl-doc':
          print(hdl_doc.__doc__)
          exit()
       elif command == 'hdl-refactor':
          print(hdl_refactor.__doc__)
+         exit()
+      elif command == 'hdl-style':
+         print(hdl_style.__doc__)
          exit()
       elif command == 'help-search':
          print(help_search.__doc__)
@@ -442,4 +439,4 @@ def main(upper_args):
          exit()
       else:
          exit(f"Invalid command: '{command}'")
-################################################################################
+#######################################################################################################################

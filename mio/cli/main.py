@@ -16,10 +16,9 @@
 ##
 
 
-
-################################################################################
+#######################################################################################################################
 # IMPORTS
-################################################################################
+#######################################################################################################################
 from docopt import docopt
 from art import *
 import sys
@@ -30,9 +29,10 @@ from . import config
 from . import doctor
 from . import emul
 from . import formal
-from . import hdl_beautify
+from . import hdl_connect
 from . import hdl_doc
 from . import hdl_refactor
+from . import hdl_style
 from . import help_search
 from . import help
 from . import init
@@ -50,8 +50,7 @@ from . import synth
 from . import team
 from . import user
 from . import vcs
-################################################################################
-
+#######################################################################################################################
 
 
 __doc__ = f"""                 {help.cli_title}
@@ -66,18 +65,16 @@ commands = f"""{help.cli_title}
 {help.cli_full_command_list}"""
 
 
-
-################################################################################
+#######################################################################################################################
 # GLOBAL VARIABLES
-################################################################################
+#######################################################################################################################
 mio_version = '0.1.0.0'
-################################################################################
+#######################################################################################################################
 
 
-
-################################################################################
+#######################################################################################################################
 # TOP-LEVEL FUNCTIONS
-################################################################################
+#######################################################################################################################
 def proccess_args():
     args = docopt(__doc__, options_first=True, version=False, help=False)
     argv = [args['<command>']] + args['<args>']
@@ -163,55 +160,57 @@ def process_command(args, argv, debug):
     if args['<command>'] == 'clean':
         clean.main(argv)
     elif args['<command>'] == 'completion':
-        print(docopt(completion.__doc__, argv=argv))
+        completion.main(argv)
     elif args['<command>'] == 'config':
-        print(docopt(config.__doc__, argv=argv))
+        config.main(argv)
     elif args['<command>'] == 'doctor':
-        print(docopt(doctor.__doc__, argv=argv))
+        doctor.main(argv)
     elif args['<command>'] == 'emulate':
-        print(docopt(emul.__doc__, argv=argv))
+        emulate.main(argv)
     elif args['<command>'] == 'formal':
-        print(docopt(formal.__doc__, argv=argv))
-    elif args['<command>'] == 'hdl-beautify':
-        print(docopt(hdl_beautify.__doc__, argv=argv))
+        formal.main(argv)
+    elif args['<command>'] == 'hdl-connect':
+        hdl_connect.main(argv)
     elif args['<command>'] == 'hdl-doc':
-        print(docopt(hdl_doc.__doc__, argv=argv))
+        hdl_doc.main(argv)
     elif args['<command>'] == 'hdl-refactor':
-        print(docopt(hdl_refactor.__doc__, argv=argv))
+        hdl_refactor.main(argv)
+    elif args['<command>'] == 'hdl-style':
+        hdl_style.main(argv)
     elif args['<command>'] == 'help-search':
-        print(docopt(help_search.__doc__, argv=argv))
+        help_search.main(argv)
     elif args['<command>'] == 'help':
         help.main(argv)
     elif args['<command>'] == 'init':
-        print(docopt(init.__doc__, argv=argv))
+        init.main(argv)
     elif args['<command>'] == 'ip':
         ip.main(argv)
     elif args['<command>'] == 'lint':
-        print(docopt(lint.__doc__, argv=argv))
+        lint.main(argv)
     elif args['<command>'] == 'new':
-        print(docopt(new.__doc__, argv=argv))
+        new.main(argv)
     elif args['<command>'] == 'org':
-        print(docopt(org.__doc__, argv=argv))
+        org.main(argv)
     elif args['<command>'] == 'regr':
-        print(docopt(regr.__doc__, argv=argv))
+        regr.main(argv)
     elif args['<command>'] == 'results':
-        print(docopt(results.__doc__, argv=argv))
+        results.main(argv)
     elif args['<command>'] == 'run-script':
-        print(docopt(run_script.__doc__, argv=argv))
+        run_script.main(argv)
     elif args['<command>'] == 'set-script':
-        print(docopt(set_script.__doc__, argv=argv))
+        set_script.main(argv)
     elif args['<command>'] == 'sim':
-        print(docopt(sim.__doc__, argv=argv))
+        sim.main(argv)
     elif args['<command>'] == 'synth':
-        print(docopt(synth.__doc__, argv=argv))
+        synth.main(argv)
     elif args['<command>'] == 'team':
-        print(docopt(team.__doc__, argv=argv))
+        team.main(argv)
     elif args['<command>'] == 'timing':
-        print(docopt(timing.__doc__, argv=argv))
+        timing.main(argv)
     elif args['<command>'] == 'user':
-        print(docopt(user.__doc__, argv=argv))
+        user.main(argv)
     elif args['<command>'] == 'vcs':
-        print(docopt(vcs.__doc__, argv=argv))
+        vcs.main(argv)
     else:
         exit_error(args, argv, debug)
 
@@ -249,4 +248,4 @@ def print_man_path():
 
 def print_info_path():
     feature_not_supported()
-################################################################################
+#######################################################################################################################

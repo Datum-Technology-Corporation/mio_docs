@@ -1,7 +1,7 @@
-#
+#######################################################################################################################
 # Copyright 2021 Datum Technology Corporation
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-#
+#######################################################################################################################
 # Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
 # with the License, or, at your option, the Apache License version 2.0. You may obtain a copy of the License at
 #
@@ -10,8 +10,7 @@
 # Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
 # an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
 # specific language governing permissions and limitations under the License.
-#
-
+#######################################################################################################################
 
 
 """Moore.io IP command
@@ -19,14 +18,13 @@
    `mio help ip <subcommand>` for more information):
 
       View IP metadata
-         bugs  ci  docs  explain  fund  ls  id  outdated  repo  search  view
+         bugs  ci  docs  explain  fund  ls  outdated  repo  search  view
    
       Operate on the IP registry
-         cache publish  test  unpublish
+         cache  publish  test  unpublish
    
       Modify IP metadata
-         access  copy  deprecate  hook  init  integrate  move  owner
-         shrinkwrap  tag  version
+         access  copy  deprecate  hook  init  integrate  move  owner  shrinkwrap  tag  version
    
       Operate on IP dependencies
          dedupe  install  prune  uninstall  update
@@ -37,10 +35,9 @@
 Usage: mio ip <command> [<args> ...]"""
 
 
-
-################################################################################
+#######################################################################################################################
 # IMPORTS
-################################################################################
+#######################################################################################################################
 from docopt import docopt
 import sys
 from . import ip_access
@@ -57,7 +54,6 @@ from . import ip_explain
 from . import ip_explore
 from . import ip_fund
 from . import ip_hook
-from . import ip_id   #   (from `cargo pkgid`)
 from . import ip_init   # Creates ip.yml, same as `npm init`, recommended that users use `mio new` (which itself calls `ip init`)
 from . import ip_install
 from . import ip_ls
@@ -79,13 +75,12 @@ from . import ip_unpublish
 from . import ip_update
 from . import ip_version
 from . import ip_view
-################################################################################
+#######################################################################################################################
 
 
-
-################################################################################
+#######################################################################################################################
 # FUNCTIONS
-################################################################################
+#######################################################################################################################
 def main(up_args):
     args = docopt(__doc__, argv=up_args)
     argv = [args['<command>']] + args['<args>']
@@ -118,8 +113,6 @@ def main(up_args):
         print(docopt(ip_fund.__doc__, argv=argv))
     elif args['<command>'] == 'hook':
         print(docopt(ip_hook.__doc__, argv=argv))
-    elif args['<command>'] == 'id':
-        print(docopt(ip_id.__doc__, argv=argv))
     elif args['<command>'] == 'init':
         print(docopt(ip_init.__doc__, argv=argv))
     elif args['<command>'] == 'install':
@@ -168,4 +161,4 @@ def main(up_args):
 
 def exit_error(command):
     sys.exit("'ip {}' is not an mio command. See 'mio help'.".format(command))
-################################################################################
+#######################################################################################################################
