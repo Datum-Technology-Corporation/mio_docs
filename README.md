@@ -24,7 +24,7 @@ Options:
       Prints the mio version and exits.
    
    -h, --help
-      Prints the overall synopsis and a list of the most commonly used commands and exits.  If preceded by <command>
+      Prints the overall synopsis and a list of the most commonly used commands and exits.
    
    --list-commands
       Prints a list of all mio commands and exits.
@@ -34,20 +34,20 @@ Options:
       given, each subsequent non-absolute -C <path> is interpreted relative to the preceding -C <path>.  If <path> is
       present but empty, e.g. -C "", then the current working directory is left unchanged.
    
-   -c <path>=<value>, --config=<name>=<value>
+   -c <name>=<value>, --config=<name>=<value>
       Pass a configuration parameter to the command.  The value given will override values from configuration files.
       The <name> is expected in the same format as listed by `mio config` (subkeys separated by dots).
       
       Note that omitting the `=` in `mio -c foo.bar ...` is allowed and sets `foo.bar` to the boolean true value (just
-      like `[foo]bar` would in a config file). Including the equals but with an empty value (like
+      like `[foo]bar` would in a config file).  Including the equals but with an empty value (like
       `mio -c foo.bar= ...`) sets foo.bar to the empty string which `mio config --type=bool` will convert to `false`.
       
    --config-env=<name>=<envvar>
       Like `-c <name>=<value>`, give configuration variable <name> a value, where <envvar> is the name of an
-      environment variable from which to retrieve the value. Unlike `-c` there is no shortcut for directly setting the
-      value to an empty string, instead the environment variable itself must be set to the empty string. It is an error
-      if the `<envvar>` does not exist in the environment. `<envvar>` may not contain an equals sign to avoid ambiguity
-      with `<name>` containing one.
+      environment variable from which to retrieve the value.  Unlike `-c` there is no shortcut for directly setting the
+      value to an empty string, instead the environment variable itself must be set to the empty string.  It is an
+      error if the `<envvar>` does not exist in the environment.  `<envvar>` may not contain an equals sign to avoid
+      ambiguity with `<name>` containing one.
    
    --html-path
       Prints the path, without trailing slash, where mio's HTML documentation is installed and exits.
@@ -94,9 +94,10 @@ Full Command List:
       timing         Executes timing analysis tool(s) against IP(s)
       formal         Executes formal logic verification tool(s) against IP(s)
       emul           Launches emulation engine(s) against IP(s)
+      hdl-connect    HDL source code port connection/disconnection
       hdl-doc        HDL source code documentation generator
-      hdl-beautify   HDL source code style policy enforcer
       hdl-refactor   HDL re-factorization engine
+      hdl-style      HDL source code style policy enforcer
       
    Manage Results and other EDA Tool Outputs
       results        Manages results from EDA tools

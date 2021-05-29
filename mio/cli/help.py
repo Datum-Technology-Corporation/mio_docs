@@ -1,14 +1,11 @@
-#######################################################################################################################
 # Copyright 2021 Datum Technology Corporation
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 #######################################################################################################################
 # Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
-# with the License, or, at your option, the Apache License version 2.0. You may obtain a copy of the License at
-#
+# with the License, or, at your option, the Apache License version 2.0.  You may obtain a copy of the License at
 #                                       https://solderpad.org/licenses/SHL-2.1/
-#
 # Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
-# an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations under the License.
 #######################################################################################################################
 
@@ -46,7 +43,7 @@ cli_options = """Options:
       Prints the mio version and exits.
    
    -h, --help
-      Prints the overall synopsis and a list of the most commonly used commands and exits.  If preceded by <command>
+      Prints the overall synopsis and a list of the most commonly used commands and exits.
    
    --list-commands
       Prints a list of all mio commands and exits.
@@ -61,15 +58,15 @@ cli_options = """Options:
       The <name> is expected in the same format as listed by `mio config` (subkeys separated by dots).
       
       Note that omitting the `=` in `mio -c foo.bar ...` is allowed and sets `foo.bar` to the boolean true value (just
-      like `[foo]bar` would in a config file). Including the equals but with an empty value (like
+      like `[foo]bar` would in a config file).  Including the equals but with an empty value (like
       `mio -c foo.bar= ...`) sets foo.bar to the empty string which `mio config --type=bool` will convert to `false`.
       
    --config-env=<name>=<envvar>
       Like `-c <name>=<value>`, give configuration variable <name> a value, where <envvar> is the name of an
-      environment variable from which to retrieve the value. Unlike `-c` there is no shortcut for directly setting the
-      value to an empty string, instead the environment variable itself must be set to the empty string. It is an error
-      if the `<envvar>` does not exist in the environment. `<envvar>` may not contain an equals sign to avoid ambiguity
-      with `<name>` containing one.
+      environment variable from which to retrieve the value.  Unlike `-c` there is no shortcut for directly setting the
+      value to an empty string, instead the environment variable itself must be set to the empty string.  It is an
+      error if the `<envvar>` does not exist in the environment.  `<envvar>` may not contain an equals sign to avoid
+      ambiguity with `<name>` containing one.
    
    --html-path
       Prints the path, without trailing slash, where mio's HTML documentation is installed and exits.
