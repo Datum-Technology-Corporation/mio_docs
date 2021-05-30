@@ -1,13 +1,13 @@
 # Copyright 2021 Datum Technology Corporation
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-#######################################################################################################################
+########################################################################################################################
 # Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
 # with the License, or, at your option, the Apache License version 2.0.  You may obtain a copy of the License at
 #                                       https://solderpad.org/licenses/SHL-2.1/
 # Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
 # an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations under the License.
-#######################################################################################################################
+########################################################################################################################
 
 
 """Moore.io Help command
@@ -155,9 +155,9 @@ mio_text = f"""{logo}
 
 {cli_full_command_list}"""
 
-#######################################################################################################################
+########################################################################################################################
 # IMPORTS
-#######################################################################################################################
+########################################################################################################################
 from docopt import docopt
 import logging
 from . import clean
@@ -179,6 +179,8 @@ from . import new
 from . import org
 from . import regr
 from . import results
+from . import run_script
+from . import set_script
 from . import sim
 from . import timing
 from . import synth
@@ -209,9 +211,9 @@ from . import ip_pack
 from . import ip_prune
 from . import ip_publish
 from . import ip_repo
-from . import run_script
 from . import ip_search
-from . import set_script
+from . import ip_star
+from . import ip_stars
 from . import ip_shrinkwrap
 from . import ip_tag
 from . import ip_test
@@ -220,12 +222,12 @@ from . import ip_unpublish
 from . import ip_update
 from . import ip_version
 from . import ip_view
-#######################################################################################################################
+########################################################################################################################
 
 
-#######################################################################################################################
+########################################################################################################################
 # FUNCTIONS
-#######################################################################################################################
+########################################################################################################################
 def process_ip_args(subcommand):
    if subcommand == 'access':
       print(ip_access.__doc__)
@@ -308,6 +310,12 @@ def process_ip_args(subcommand):
    elif subcommand == 'shrinkwrap':
       print(ip_shrinkwrap.__doc__)
       exit()
+   elif subcommand == 'star':
+      print(ip_star.__doc__)
+      exit()
+   elif subcommand == 'stars':
+      print(ip_stars.__doc__)
+      exit()
    elif subcommand == 'tag':
       print(ip_tag.__doc__)
       exit()
@@ -331,12 +339,12 @@ def process_ip_args(subcommand):
       exit()
    else:
       exit("No such subcommand for `mio ip`")
-#######################################################################################################################
+########################################################################################################################
 
 
-#######################################################################################################################
+########################################################################################################################
 # ENTRY POINT
-#######################################################################################################################
+########################################################################################################################
 def main(upper_args):
    logging.debug("help - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args)
@@ -436,4 +444,4 @@ def main(upper_args):
          exit()
       else:
          exit(f"Invalid command: '{command}'")
-#######################################################################################################################
+########################################################################################################################

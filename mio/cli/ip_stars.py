@@ -10,14 +10,19 @@
 ########################################################################################################################
 
 
-"""Moore.io Set Script command
-   Registers script again Project/IP.
+"""Moore.io IP Stars command
+   View IPs marked as favorites.
 
-Usage: mio set-script [[@<scope>/]<ip>] <command> <script>
+Usage:
+   mio ip stars [<user>] [options]
 
+Options:
+   -r <url> , --registry=<url>  Specifies the registry the user belongs to.
+   -f <type>, --format=<type>   Specifies output format: text, yml, xml, json, csv [default: text]
+  
 Examples:
-   mio set-script my-command my_script.py                      # Register Project script
-   mio set-script @my-scope/my_ip this_command that_script.py  # Register script with IP"""
+   mio ip stars                                   # View your favorite IP(s)
+   mio ip stars cbabbage -r http://registry.com/  # View favorite IP(s) of a user from a specific registry"""
 
 
 ########################################################################################################################
@@ -29,16 +34,10 @@ import logging
 
 
 ########################################################################################################################
-# FUNCTIONS
-########################################################################################################################
-########################################################################################################################
-
-
-########################################################################################################################
 # ENTRY POINT
 ########################################################################################################################
 def main(upper_args):
-   logging.debug("set_script - upper_args: " + str(upper_args))
+   logging.debug("ip_stars - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=False)
-   logging.debug("set_script - args: " + str(args))
+   logging.debug("ip_stars - args: " + str(args))
 ########################################################################################################################

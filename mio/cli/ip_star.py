@@ -10,14 +10,19 @@
 ########################################################################################################################
 
 
-"""Moore.io Set Script command
-   Registers script again Project/IP.
+"""Moore.io IP Star command
+   Mark your favorite IPs. "Starring" an IP means that you have some interest in it. It's a positive way to show that
+   you care. Boolean only: starring repeatedly has no additional effect.
 
-Usage: mio set-script [[@<scope>/]<ip>] <command> <script>
+Usage:
+   mio ip star [[@<scope>/]<ip> ...] [options]
 
+Options:
+   -r <url> , --registry=<url>  Specifies the registry the IP(s) belong to.
+  
 Examples:
-   mio set-script my-command my_script.py                      # Register Project script
-   mio set-script @my-scope/my_ip this_command that_script.py  # Register script with IP"""
+   mio ip star @my-scope/my_ip                             # Mark an IP as a favorite
+   mio ip star some_ip another_ip -r http://registry.com/  # Mark an IPs as favorites from a specific registry"""
 
 
 ########################################################################################################################
@@ -29,16 +34,10 @@ import logging
 
 
 ########################################################################################################################
-# FUNCTIONS
-########################################################################################################################
-########################################################################################################################
-
-
-########################################################################################################################
 # ENTRY POINT
 ########################################################################################################################
 def main(upper_args):
-   logging.debug("set_script - upper_args: " + str(upper_args))
+   logging.debug("ip_star - upper_args: " + str(upper_args))
    args = docopt(__doc__, argv=upper_args, options_first=False)
-   logging.debug("set_script - args: " + str(args))
+   logging.debug("ip_star - args: " + str(args))
 ########################################################################################################################

@@ -1,13 +1,13 @@
 # Copyright 2021 Datum Technology Corporation
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-#######################################################################################################################
+########################################################################################################################
 # Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
 # with the License, or, at your option, the Apache License version 2.0.  You may obtain a copy of the License at
 #                                       https://solderpad.org/licenses/SHL-2.1/
 # Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
 # an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations under the License.
-#######################################################################################################################
+########################################################################################################################
 
 
 """Moore.io IP command
@@ -15,13 +15,13 @@
    `mio help ip <subcommand>` for more information):
 
       View IP metadata
-         bugs  ci  docs  explain  fund  ls  outdated  repo  search  view
+         bugs  ci  docs  explain  fund  ls  outdated  repo  search  stars  view
    
       Operate on the IP registry
          cache  publish  test  unpublish
    
       Modify IP metadata
-         access  copy  deprecate  hook  init  integrate  move  owner  shrinkwrap  tag  version
+         access  copy  deprecate  hook  init  integrate  move  owner  shrinkwrap  star  tag  version
    
       Operate on IP dependencies
          dedupe  install  prune  uninstall  update
@@ -32,9 +32,9 @@
 Usage: mio ip <command> [<args> ...]"""
 
 
-#######################################################################################################################
+########################################################################################################################
 # IMPORTS
-#######################################################################################################################
+########################################################################################################################
 from docopt import docopt
 import sys
 from . import ip_access
@@ -65,6 +65,8 @@ from . import run_script
 from . import ip_search
 from . import set_script
 from . import ip_shrinkwrap   # Creates/updates ip.lock.yml. Also implements cargo's 'verify-project'
+from . import ip_star
+from . import ip_stars
 from . import ip_tag
 from . import ip_test
 from . import ip_uninstall
@@ -72,12 +74,12 @@ from . import ip_unpublish
 from . import ip_update
 from . import ip_version
 from . import ip_view
-#######################################################################################################################
+########################################################################################################################
 
 
-#######################################################################################################################
+########################################################################################################################
 # FUNCTIONS
-#######################################################################################################################
+########################################################################################################################
 def main(up_args):
     args = docopt(__doc__, argv=up_args)
     argv = [args['<command>']] + args['<args>']
@@ -138,6 +140,10 @@ def main(up_args):
         print(docopt(set_script.__doc__, argv=argv))
     elif args['<command>'] == 'shrinkwrap':
         print(docopt(ip_shrinkwrap.__doc__, argv=argv))
+    elif args['<command>'] == 'star':
+        print(docopt(ip_star.__doc__, argv=argv))
+    elif args['<command>'] == 'stars':
+        print(docopt(ip_stars.__doc__, argv=argv))
     elif args['<command>'] == 'tag':
         print(docopt(ip_tag.__doc__, argv=argv))
     elif args['<command>'] == 'test':
@@ -158,4 +164,4 @@ def main(up_args):
 
 def exit_error(command):
     sys.exit("'ip {}' is not an mio command. See 'mio help'.".format(command))
-#######################################################################################################################
+########################################################################################################################
