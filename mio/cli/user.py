@@ -16,7 +16,7 @@
 Usage:
   mio user add                              [options]  Create or verify a user
   mio user login                            [options]  Saves credentials to .mio.toml
-  mio user logout                           [options]  Removes credentials from .mio.toml
+  mio user logout                           [options]  Removes credentials and tokens from .mio.toml
   mio user profile get [<property>]         [options]  Displays one or all profile properties
   mio user profile set <property> <value>   [options]  Sets profile property
   mio user profile set password                        Sets profile password
@@ -31,19 +31,19 @@ Options:
    -a <type>, --auth=<type>     Specifies the type of authentication
    -f <type>, --format=<type>   Specifies input/output format: text, yml, xml, json, csv [default: text]
    -t       , --use-tabs        Outputs results as lines with tab-separated columns.
-   -r       , --read-only       Marks a token as unable to publish
+   -R       , --read-only       Marks a token as unable to publish
    -o <code>, --otp=<code>      Specifies two-factor authentication code
 
 Examples:
-   mio user add                                        # Add new user to default Registry
-   mio user login -o 123123                            # Log in using otp code
-   mio user profile get email                          # Print user email address
-   mio user profile set last-name Babbage              # Set user property
-   mio user profile get -f xml                         # Print entire user profile in XML format
-   mio user profile enable-2fa -a sqrl                 # Enable two-factor authentication using SQRL
-   mio user token list --format=yml                    # Print out all user tokens in YAML format
-   mio user token create -r                            # Create read-only token for user
-   mio user whoami --registry=https://my-registry.com  # Print user name for custom Registry"""
+   mio user add                                                     # Add new user to default Registry
+   mio user login -o 123123 -s my-scope -r https://my-registry.com  # Log in using otp code to specific scope
+   mio user profile get email                                       # Print user email address
+   mio user profile set last-name Babbage                           # Set user property
+   mio user profile get -f xml                                      # Print entire user profile in XML format
+   mio user profile enable-2fa -a sqrl                              # Enable two-factor authentication using SQRL
+   mio user token list --format=yml                                 # Print out all user tokens in YAML format
+   mio user token create -R                                         # Create read-only token for user
+   mio user whoami                                                  # Print user name for default Registry"""
 
 
 ########################################################################################################################
