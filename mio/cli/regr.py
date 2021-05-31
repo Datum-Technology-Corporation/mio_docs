@@ -12,25 +12,46 @@
 
 """Moore.io Regr(ession) Command
    Executes regression(s) against target IP(s).
+   
+   Regr can accept multiple 'mlist' files. The following is a sample to be used with `--m-file`:
+   ```
+   % mio@0.3.7
+      --config=def=456
+      --config-env='username'=USER
+   $ regr
+      @my_scope/my_ip@2.1.0-rc.2
+      nightly
+      nightly-client1
+      nightly-client2
+   --
+      dp-width=64B
+   ---
+      --hotfix32
+   ```
 
 Usage:
-   mio regr [[@<scope>/]<ip>] <regression>   [options] [-- <parameters>]  Single IP and regression
-   mio regr [@<scope>/]<ip> <regression> ... [options]                    Multiple regressions against the same IP
-   mio regr [@<scope>/]<ip>/<regression> ... [options]                    Multiple regressions against multiple IPs
+   mio regr [[@<scope>/]<ip>] <regression> ... [options] [-- <params>] [--- <args>]  Runs regression(s) against IP
+   mio regr [@<scope>/]<ip>/<regression>   ... [options] [-- <params>] [--- <args>]  Runs regression(s) against IP(s)
+   mio regr !                                  [options] [-- <params>] [--- <args>]  Re-runs last regr command
 
 Options:
-   -f <path>, --params-file=<path>
-      Specifies regression parameters file (inline parameters take precedence).
-   
-   -e <address>, --email=<address>
-      Specifies email address(es) (comma separated) to contact once regression(s) have finished.
+   -f <path>   , --m-file=<path>       Specifies mlist from which to load mio, tool arguments and IP parameters
+   -e <address>, --email=<address>     Specifies email address(es) (comma separated) to contact with regression results.
+   -l <string> , --label=<string>      Specifies results label.  Used as a prefix/suffix in file and/or directory names.
+   -q          , --quiet               Mutes timing analysis tool output to stdout.
+   -p <path>   , --results-dir=<path>  Specifies results directory path.  A symlink is created in the local results.
+   -d          , --dry-run             Only Prints the commands mio would normally execute to perform timing analysis.
+   -m          , --m-run               Only prints the mlist file contents for the mio command.
    
 Examples:
-   mio regr sanity                             # Run specific regression against Default IP
-   mio regr @my_scope/my_ip nightly            # Run specific regression against specific IP
-   mio regr nightly -f P2.txt -- multiplier=1  # Run specific regression against specific IP with mixed parameters
-   mio regr client_1_bugs client_2_features    # Launch multiple regressions in parallel against Default IP
-   mio regr my_ip/sanity some_ip/sanity        # Launch multiple regressions in parallel against multiple IPs"""
+   mio regr sanity                               # Run specific regression against Default IP
+   mio regr ! -q -- dp-width=64B                 # Re-run last regression with additional parameters and no output
+   mio regr -f sanity_mod.mlist -f b34.mlist     # Run two regressions from mlists in parallel
+   mio regr @my_scope/my_ip nightly              # Run specific regression against specific IP
+   mio regr nightly -f P2.mlist -- multiplier=1  # Run specific regression against specific IP with mixed parameters
+   mio regr client_1_bugs client_2_features      # Launch multiple regressions in parallel against Default IP
+   mio regr my_ip/sanity some_ip/nightly         # Launch multiple regressions in parallel against multiple IPs
+   mio regr ! -m > ./my_regr.mlist               # Save last regression command to disk"""
 
 
 ########################################################################################################################

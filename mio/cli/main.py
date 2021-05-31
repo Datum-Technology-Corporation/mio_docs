@@ -53,8 +53,8 @@ from . import vcs
 ########################################################################################################################
 
 
-__doc__ = f"""                 {help.cli_title}
-                        I N T E R A C T I V E   D E M O
+__doc__ = f"""                                     {help.cli_title}
+                                           I N T E R A C T I V E   D E M O
 
 {help.cli_usage}
 

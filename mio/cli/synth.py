@@ -11,12 +11,41 @@
 
 
 """Moore.io Synth(esis) Command
-   Launches synthesis tool against target IPs.
+   Launches synthesis tool against target IP.
+   
+   The following is a sample 'mlist' file to be used with `--m-file`:
+   ```
+   % mio@0.4.1
+      --config=gh=3
+      --dbg=1
+   $ emul
+      @my_scope/my_ip@2.1.0-rc.2
+      --app=olympus@3.1.15
+   --
+      dp-width=32B
+      phy-bypass=yes
+   ---
+      --ignore-warnings
+   ```
 
-Usage: mio synth [[@<scope>/]<ip> ...] [options]
+Usage:
+   mio synth [@<scope>/]<ip>[@<version>] [options] [-- <params>] [--- <args>]  Runs specific synthesis
+   mio synth !                           [options] [-- <params>] [--- <args>]  Re-runs last synthesis
 
 Options:
-   # TBD
+   -a <name>, --app=<name>  Specifies synthesis application name (must be in mio Configuration).
+   -g       , --gui         Invokes synthesis tool in graphical or 'GUI' mode.
+   
+   -f <path>, --m-file=<path>      Specifies mlist from which to load mio arguments, IP parameters and Tool arguments.
+   -x <path>, --tcl-script=<path>  Specifies TCL script to be executed by synthesis tool.
+   -i <path>, --constraint=<path>  Specifies constraint file to be loaded.
+   
+   -l <string> , --label=<string>      Specifies results label.  Used as a prefix/suffix in file and/or directory names.
+   -q          , --quiet               Mutes synthesis tool output to stdout.
+   -b          , --batch-mode          Invokes synthesis tool in parallel (usually combined with --repeat).
+   -p <path>   , --results-dir=<path>  Specifies results directory path.  A symlink is created in the local results.
+   -d          , --dry-run             Only Prints the commands mio would normally execute to perform synthesis.
+   -m          , --m-run               Only prints the mlist file contents for the mio command.
 
 Examples:
    # TBD"""

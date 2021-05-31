@@ -1,4 +1,12 @@
-% mio @ 0.2.1
+# % mio [@ <version>]
+#    <pre args>
+# $ [<command>]
+#    [<command args>]
+# --
+#    [<ip args>]
+# ---
+#    [<tool args>]
+mio@0.2.1
    --config-env='simulators.questa.12.1.path'=QUESTA_12_1_DIR
    --config=abc=123
 $ sim

@@ -11,12 +11,42 @@
 
 
 """Moore.io Emul(ation) Command
-   Launches emulation engine(s) against against IP(s).
+   Launches emulation engine against against IP.
+   
+   The following is a sample 'mlist' file to be used with `--m-file`:
+   ```
+   % mio@0.3.7
+      --config=def=456
+      --config-env='username'=USER
+   $ emul
+      @my_scope/my_ip@2.1.0-rc.2
+      --app=zebu@3.1.15
+   --
+      dp-width=32B
+      phy-bypass=yes
+   ---
+      --ignore-warnings
+   ```
 
-Usage: mio emul [[@<scope>/]<ip> ...] [options]
+Usage:
+   mio emul [@<scope>/]<ip>[@<version>] [options] [-- <params>] [--- <args>]  Runs specific emulation
+   mio emul !                           [options] [-- <params>] [--- <args>]  Re-runs last emulation
 
 Options:
-   # TBD
+   -a <name>, --app=<name>  Specifies emulation application name (must be in mio Configuration).
+   -g       , --gui         Invokes emulation tool in graphical or 'GUI' mode.
+   
+   -f <path>, --m-file=<path>      Specifies mlist from which to load mio arguments, IP parameters and Tool arguments.
+   -x <path>, --tcl-script=<path>  Specifies TCL script to be executed by emulation tool.
+   -z <path>, --snapshot=<path>    Specifies emulation snapshot to be loaded.
+   -n <path>, --netlist=<path>     Specifies design netlist to use.
+   -i <path>, --sdf=<path>         Specifies timing annotations file to use for netlist.
+   
+   -l <string> , --label=<string>      Specifies results label.  Used as a prefix/suffix in file and/or directory names.
+   -q          , --quiet               Mutes emulation tool output to stdout.
+   -p <path>   , --results-dir=<path>  Specifies results directory path.  A symlink is created in the local results.
+   -d          , --dry-run             Only Prints the commands mio would normally execute to perform emulation.
+   -m          , --m-run               Only prints the mlist file contents for the mio command.
 
 Examples:
    #TBD"""

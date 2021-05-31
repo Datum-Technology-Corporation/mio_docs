@@ -11,8 +11,9 @@
 
 
 """Moore.io Results Command
-   Manages results from EDA tools like a database. The following types are currently available: 'all', 'sim', 'sim-logs', 'regr', 'cov', 'waves', 'lint',
-   'formal', 'emul', 'synth' and 'timing'.  If the job type is not specified, then the last job type run is assumed.
+   Manages results from EDA tools like a database. The following types are currently available: 'all', 'sim',
+   'sim-logs', 'regr', 'cov', 'waves', 'lint', 'formal', 'emul', 'synth' and 'timing'.  If the job type is not
+   specified, then the last job type run is assumed.
    
    By default, selects the latest results.
 

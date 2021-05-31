@@ -18,25 +18,22 @@
    locked simulator artifacts, see `mio clean`.  Combining any of the step-control arguments (-L, -C, -E, -S) with
    missing steps can result in unpredictable behavior and is not recommended (ex: `-LS`).
    
-   Parameters (`<parameters>`) are parsed by mio which performs the conversions to specific vendor tool arguments, as
-   specified by IP metadata (`ip.yml`) and Moore.io Configuration (`.mio.toml`).  Parameters that are not recognized are
-   passed untouched to the end executable, along with all Tool Arguments (`<tool args>`).
+   Parameters (`<params>`) are parsed by mio which performs the conversions to specific vendor tool arguments, as
+   specified by IP metadata (`ip.yml`) and the Configuration Database (`.mio.toml`).  Parameters that are not
+   recognized are passed untouched to the end executable, along with all Tool Arguments (`<args>`).
    
    Unless configured otherwise, mio will attempt to parallelize every step of the process as much as the IP dependency
-   graph and computing resources allow.  Moore.io must first be configured for your computing setup: by default, all
-   jobs are run on the machine launching the `mio sim` command.  Job Scheduling software setup is captured via
-   `mio config`.
+   graph and computing resources allow.  Job Scheduling setup is captured via `mio config`.
    
    For small runs of the same test, the combination of `--batch-mode` and `--repeat` (with the absence of `--seed`) is
    recommended over adding temporarily to an IP's test suite. Ex: `mio sim my_ip -t my_test --batch --repeat=10`
    
-   The following is a sample 'mlist' file to be used with --m-file:
+   Sim can accept multiple 'mlist' files. The following is a sample to be used with `--m-file`:
    ```
-   % cat bug35.mlist
-   mio@0.2.1
+   % mio@0.2.1
       --config-env='simulators.questa.12.1.path'=QUESTA_12_1_DIR
       --config=abc=123
-   - sim
+   $ sim
       @my_scope/my_ip@2.1.0-rc.2
       --test=my_test
       --seed=23948324
@@ -55,8 +52,8 @@
    ```
 
 Usage:
-   mio sim [[@<scope>/]<ip>] [options] [-- <parameters>] [--- <tool args>]  Run specific simulation
-   mio sim !                                                                Re-run last simulation
+   mio sim [[@<scope>/]<ip>[@<version>]] [options] [-- <params>] [--- <args>]  Runs specific simulation
+   mio sim !                             [options] [-- <params>] [--- <args>]  Re-runs last simulation
 
 Options:
    -t <name>      , --test=<name>         Specifies test name (for UVM/VMM/OVM based IPs).
@@ -71,7 +68,7 @@ Options:
    -x <path>, --tcl-script=<path>  Specifies TCL script to be executed by simulator.
    -z <path>, --snapshot=<path>    Specifies simulation snapshot to be loaded.
    -n <path>, --netlist=<path>     Specifies design netlist to use.
-   -i <path>, --sdf=<path>         Specifies timing annotations file to use for simulation.
+   -i <path>, --sdf=<path>         Specifies timing annotations file to use for netlist.
    
    -L, --library-creation-only  Only creates simulator libraries for each IP.
    -C, --compilation-only       Only performs compilation of each IP.
@@ -79,12 +76,13 @@ Options:
    -S, --simulation-only        Only launches simulation for target IP.
    -F, --force-steps            Forces mio to go through all the steps necessary.
    
-   -l <string> , --label=<string>      Specifies simulation label.  Used as a prefix in file and/or directory names.
+   -l <string> , --label=<string>      Specifies results label.  Used as a prefix/suffix in file and/or directory names.
    -q          , --quiet               Mutes simulator output to stdout.
-   -b          , --batch-mode          Invokes simulator runs in parallel (usually combined with --repeat).
+   -b          , --batch-mode          Runs simulations in parallel (usually combined with --repeat).
    -r <integer>, --repeat=<integer>    Specifies number of simulation repeats.
    -p <path>   , --results-dir=<path>  Specifies results directory path.  A symlink is created in the local results.
-   -d          , --dry-run             Only Prints the commands mio would normally execute to perform simulation.
+   -d          , --dry-run             Only prints the commands mio would normally execute to perform simulation.
+   -m          , --m-run               Only prints the mlist file contents for the mio command.
 
 Examples:
    mio sim !                                            # Re-run last simulation
@@ -97,7 +95,7 @@ Examples:
    mio sim -a nc -n ./bin/latest.sv --sdf=default.sdf   # Simulate specific design netlist with specific delays with NC
    mio sim my_ip -t my_test -b --repeat=10 --cov=*      # Simulate a specific IP and test 10 times in parallel with
                                                           random seeds and all coverage types being collected
-   mio sim ! --dry-run > ./bug35.mlist                  # Create mlist file to reproduce simulation elsewhere with mio
+   mio sim ! -m > ./bug35.mlist                         # Create mlist file to reproduce simulation elsewhere with mio
    mio sim @my_scope/my_ip -a vcs -Cd > ./ip.vcs.flist  # Create filelist to reproduce simulation outside mio"""
 
 

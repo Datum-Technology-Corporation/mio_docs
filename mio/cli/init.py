@@ -12,24 +12,40 @@
 
 """Moore.io Init Command
    Creates .mio.toml configuration file for a new Project.
+   
+   Init can accept multiple 'mlist' files. The following is a sample to be used with `--m-file`:
+   ```
+   % mio@0.3.7
+   $ init
+      @my_scope/my_proj_generator@2.1.0-rc.2
+      -n my_project
+   --
+      client-name=acme
+      encrypt=True
+   ```
 
-Usage: mio init [<generator>] [<name>] [options] -- <arguments>
+Usage:
+   mio init [<generator>] [options] -- <args>  Creates specific Project
+   mio init !             [options] -- <args>  Re-runs last `init` command
 
 Options:
-   -s, --skip-questions
-      Skips the questionnaire
-   
-   -w <path>, --work-dir=<path>
-      Specifies the directory in which the IP will be initialized
-   
-   -f <path>, --args-file=<path>
-      Specifies an argument file for the questionnaire (in-line arguments take precedence)
+   -n <string>, --name=<string>      Specifies name of new construct
+   -s         , --skip               Skips generator questionnaire
+   -f <path>  , --m-file=<path>      Specifies mlist from which to load mio and generator arguments.
+   -i <path>  , --args=<path>        Specifies arguments (YAML) file (inline arguments take precedence)
+   -q         , --quiet              Mutes generator output.
+   -p <path>  , --output-dir=<path>  Specifies output path.
+   -d         , --dry-run            Only prints commands mio would normally execute.
+   -m         , --m-run              Only prints the mlist file contents for the mio command.
 
 Examples:
-   mio init                                                        # Create Project .mio.toml through stock questionnaire
-   mio init my_project                                             # Init a scoped and named IP
-   mio init my-generator -w ./some_path --skip-questions           # Use a generator but skip the questions and use a custom path
-   mio init my_project --args-file=./my_args.txt -- -a --b=1 -c=2  # Use stock behavior, but answer questions with an arg file and inline arguments"""
+   mio init                                               # Create Project .mio.toml through stock questionnaire
+   mio init ! -n my_other_project                         # Re-run last init command with different name
+   mio init -m ./my_project.mlist                         # Run mlist file with all arguments
+   mio init my_gen -n my_project -i ./my_proj_spec.yml    # Init a named Project from a specific generator with args
+   mio init my-generator -p ./some_path -q                # Use a generator with a custom output path and no text output
+   mio init my_project -i=./my_args.yml -- -a --b=1 -c=2  # Use stock behavior, but answer questions with file and args
+   mio init ! -m > ./redo.mlist                           # Save last init command to disk"""
 
 
 
