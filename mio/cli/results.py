@@ -11,8 +11,8 @@
 
 
 """Moore.io Results command
-   Manages results from EDA tools of all types: 'sim', 'regr', 'cov', 'waves', 'lint', 'formal', 'emul', 'synth' and
-   'timing'.  If the job type is not specified, then the last job type run is assumed.
+   Manages results from EDA tools of all types: 'sim', 'sim-logs', 'regr', 'cov', 'waves', 'lint', 'formal', 'emul',
+   'synth' and 'timing'.  If the job type is not specified, then the last job type run is assumed.
 
 Usage:
    mio results view    [<type>] [[@<scope>]/<ip> ... | *] [options]  Opens results in $EDITOR or application
@@ -21,21 +21,22 @@ Usage:
    mio results pack    [<type>] [[@<scope>]/<ip> ... | *] [options]  Creates tarball from results
 
 Options:
-   -F, --force  Forces the deletion of files (if read-only and/or locked)
-   -a, --all    Selects all results for the command, not just the latest results
+   -F       , --force            Forces the deletion of files (if read-only and/or locked)
+   -a       , --all              Selects all results for the command, not just the latest results
+   -p <path>, --location=<path>  Location for results of 'collate' and 'pack' commands
   
 Examples:
-   mio results view                      # View latest results for Default IP
-   mio results view sim                  # View latest simulation results for Default IP
-   mio results view regr *               # View latest regression results for all IPs
-   mio results view lint some_ip         # View latest linting results for a specific IP
-   mio results view cov @my_scope/my_ip  # View latest coverage data for a specific IP
-   mio results delete -F                 # Forcibly delete the latest results for Default IP
-   mio results delete waves --all        # Delete all waveforms for Default IP
-   mio results delete --all              # Delete all results for Default IP
-   mio results delete * --all            # Delete all results for all IPs
-   mio results collate cov my_ip         # Collate latest coverage data for a specific IP
-   mio results pack synth                # Creates tarball with latest synthesis results for Default IP"""
+   mio results view                          # View latest results for Default IP
+   mio results view sim                      # View latest simulation results for Default IP
+   mio results view regr *                   # View latest regression results for all IPs
+   mio results view lint some_ip             # View latest linting results for a specific IP
+   mio results view cov @my_scope/my_ip      # View latest coverage data for a specific IP
+   mio results delete -F                     # Forcibly delete the latest results for Default IP
+   mio results delete waves --all            # Delete all waveforms for Default IP
+   mio results delete --all                  # Delete all results for Default IP
+   mio results delete * --all                # Delete all results for all IPs
+   mio results collate cov my_ip -p ~/cov    # Collate latest coverage data for a specific IP
+   mio results pack synth -p ./netlists.tgz  # Creates tarball with latest synthesis results for Default IP"""
 
 
 ########################################################################################################################
