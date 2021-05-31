@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP View command
+"""Moore.io IP View Command
    Views IP registry information.
    
    If only a single string field for a single version is output, then it will not be colorized or quoted, to enable

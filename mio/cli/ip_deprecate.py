@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Deprecate command
+"""Moore.io IP Deprecate Command
    Updates registry entry for IP.
 
 Usage: mio ip deprecate [@<scope>/]<ip>[@<version range>] [options] <message>

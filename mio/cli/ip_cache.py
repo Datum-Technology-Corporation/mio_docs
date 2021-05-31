@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Cache command
+"""Moore.io IP Cache Command
    Used to add, list, or clean the mio IP cache folder:
    * `update`: Add the specified IPs to the local cache. This command is primarily
      intended to be used internally by mio, but it can provide a way to add data

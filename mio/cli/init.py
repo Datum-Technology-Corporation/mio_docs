@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Init command
+"""Moore.io Init Command
    Creates .mio.toml configuration file for a new Project.
 
 Usage: mio init [<generator>] [<name>] [options] -- <arguments>

@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io New command
+"""Moore.io New Command
    Invokes the mio code generator system.  If no generator name is specified, the user is prompted to select from a
    list of what is currently installed (and applicable in this context).  All arguments right of '--' are passed
    untouched to the generator.

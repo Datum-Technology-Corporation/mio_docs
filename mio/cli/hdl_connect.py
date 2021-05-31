@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io HDL-Connect command
+"""Moore.io HDL-Connect Command
    Automates the connection/disconnection of HDL ports.
 
 Usage:

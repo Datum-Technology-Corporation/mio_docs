@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Timing command
+"""Moore.io Timing Command
    Launches Timing Analysis tool against target IPs.
 
 Usage:  mio timing [[@<scope>/]<ip> ...] [options]

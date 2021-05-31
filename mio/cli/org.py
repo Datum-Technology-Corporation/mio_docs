@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Org(anization) command
+"""Moore.io Org(anization) Command
    Organization management.
 
 Usage:

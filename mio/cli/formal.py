@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Formal command
+"""Moore.io Formal Command
    Executes formal logic verification tool against IP(s)
 
 Usage: mio formal [[@<scope>/]<ip> ...] [options]

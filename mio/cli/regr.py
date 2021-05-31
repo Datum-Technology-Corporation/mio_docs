@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Regr(ession) command
+"""Moore.io Regr(ession) Command
    Executes regression(s) against target IP(s).
 
 Usage:

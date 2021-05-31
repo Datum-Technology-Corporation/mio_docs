@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Fund command
+"""Moore.io IP Fund Command
    Retrieves information on how to fund the Project dependencies. If no IP name is provided, it will list all
    dependencies that are looking for funding in a tree structure, listing the type of funding and the url to visit. If
    IPs are provided, then it tries to open each funding url using the --browser config param; if there are multiple

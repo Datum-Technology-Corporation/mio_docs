@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io HDL-Refactor command
+"""Moore.io HDL-Refactor Command
    Safely performs operations on HDL source code.
 
 Usage:

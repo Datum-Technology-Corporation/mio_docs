@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Docs command
+"""Moore.io IP Docs Command
    Opens IP documentation. Use
    `ip config set default-editor-<extension> <editor>` to change the default program in which documentation will be
    viewed.

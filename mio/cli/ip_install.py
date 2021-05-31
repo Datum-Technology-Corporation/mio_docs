@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Install command
+"""Moore.io IP Install Command
    Installs an IP and any IPs that it depends on.  If command is run from within an IP directory, the command will
    append the newly installed IP to the target IP's dependency list.
 

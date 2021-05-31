@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Move command
+"""Moore.io IP Move Command
    Move an IP to a new location or rename it.
 
 Usage:

@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Edit command
+"""Moore.io IP Edit Command
    Opens IP source in default editor. If IP is a dependency, it is first imported into the source tree.
 
 Usage:

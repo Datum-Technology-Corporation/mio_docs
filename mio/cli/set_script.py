@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Set Script command
+"""Moore.io Set Script Command
    Registers script again Project/IP.
 
 Usage: mio set-script [[@<scope>/]<ip>] <command> <script>

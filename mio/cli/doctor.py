@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Doctor command
+"""Moore.io Doctor Command
    Runs a set of checks to ensure mio installation has what it needs to operate
    properly
 

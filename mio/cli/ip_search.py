@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Search command
+"""Moore.io IP Search Command
    Search the registry for IPs matching the search terms.  `mio ip search` performs a linear, incremental,
    lexically-ordered search through IP metadata for all files in the registry.  If your terminal has color support, it
    will further highlight the matches in the results.  This can be disabled with the config item `color`.

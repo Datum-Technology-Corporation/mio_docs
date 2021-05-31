@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Stars command
+"""Moore.io IP Stars Command
    View IPs marked as favorites.
 
 Usage:

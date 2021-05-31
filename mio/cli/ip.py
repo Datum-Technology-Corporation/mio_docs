@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP command
+"""Moore.io IP Command
    IP Management. The following subcommands are available (see
    `mio help ip <subcommand>` for more information):
 

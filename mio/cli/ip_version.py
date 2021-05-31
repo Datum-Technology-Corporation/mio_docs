@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Version command
+"""Moore.io IP Version Command
    Moves IP to new version.
 
 Usage:

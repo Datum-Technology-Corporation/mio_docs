@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Publish command
+"""Moore.io IP Publish Command
    Publishes an IP to a registry.
 
 Usage: mio ip publish [@<scope>/]<ip> [options]

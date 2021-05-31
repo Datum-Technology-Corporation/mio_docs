@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Update command
+"""Moore.io IP Update Command
    Updates all the IPs listed to the latest version (specified by the tag config), respecting semver.  It will also
    install missing IPs.
 

@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Help command
+"""Moore.io Help Command
    Shows the appropriate documentation page for the specified command
 
 Usage: mio help <command> [<subcommand>]

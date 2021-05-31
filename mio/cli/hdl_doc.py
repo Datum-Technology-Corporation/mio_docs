@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io HDL Doc command
+"""Moore.io HDL Doc Command
    Generates reference documentation for HDL source code.
 
 Usage:

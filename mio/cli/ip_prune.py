@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Prune command
+"""Moore.io IP Prune Command
    Removes extraneous IPs. If an IP name is provided, then only IPs matching one of the supplied names are removed.
    
    Extraneous IPs are those present in IP dependencies directories that are not listed as any IP's dependency list.

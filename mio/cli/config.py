@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Config command
+"""Moore.io Config Command
    Reads/writes to/from mio configuration space.
    
    Moore.io gets it configuration settings from the command line, environment

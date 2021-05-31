@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Owner command
+"""Moore.io IP Owner Command
    Manage ownership of published IPs.
    
    * `ls` : List all the users who have access to modify an IP and push new versions. Handy when you need to know who

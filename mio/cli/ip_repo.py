@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Repo command
+"""Moore.io IP Repo Command
    Opens IP repository page using default app for given VCS.
 
 Usage:

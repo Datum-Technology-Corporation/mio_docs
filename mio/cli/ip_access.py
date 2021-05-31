@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Access command
+"""Moore.io IP Access Command
    Used to set access controls on private IPs. For all of the subcommands,
    `ip access` will perform actions on the IP(s) in the current working
    directory if no IP name is passed to the subcommand.

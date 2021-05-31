@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Diff command
+"""Moore.io IP Diff Command
    Prints diff patches of files for IPs published to the mio registry.
    
    Allows for IPs to be specified either via:

@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Tag command
+"""Moore.io IP Tag Command
    Adds, removes, or enumerates distribution tags on an IP.
 
 Usage:

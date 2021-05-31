@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Init command
+"""Moore.io IP Init Command
    Creates an `ip.yml` file for a new IP.
 
 Usage: mio ip init [<generator>] [@<scope>/][<name>] [options] -- <arguments>

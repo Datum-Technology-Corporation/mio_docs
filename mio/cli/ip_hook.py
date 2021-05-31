@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Hook command
+"""Moore.io IP Hook Command
    Allows you to manage IP hooks, including adding, removing, listing, and updating.  Hooks allow you to configure URL
    endpoints that will be notified whenever a change happens to any of the supported entity types.  Three different
    types of entities can be watched by hooks: IPs, Owners, and Scopes.

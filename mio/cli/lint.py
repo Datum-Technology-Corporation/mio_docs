@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Lint command
+"""Moore.io Lint Command
    Launches linting tool against target IPs
 
 Usage: mio lint [[@<scope>/]<ip> ...] [options]

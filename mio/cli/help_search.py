@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Help-Search command
+"""Moore.io Help-Search Command
    Searches mio documentation for the terms provided and lists the results by
    relevance.
 

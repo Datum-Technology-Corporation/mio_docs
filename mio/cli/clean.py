@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Clean command
+"""Moore.io Clean Command
    Manages output artifacts from all tools (other than job results)
 
 Usage:

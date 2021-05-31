@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Test command
+"""Moore.io IP Test Command
    Runs the IP's specified testing section. Used primarily for contributing
    computing resources to FOS IPs.
 

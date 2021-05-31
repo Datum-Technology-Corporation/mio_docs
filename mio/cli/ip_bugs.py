@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Bugs command
+"""Moore.io IP Bugs Command
    Tries to guess at the likely location of an IP's bug tracker URL or the mailto URL.
 
 Usage: mio ip bugs [[@<scope>]/<ip> ...]

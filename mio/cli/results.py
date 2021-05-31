@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Results command
+"""Moore.io Results Command
    Manages results from EDA tools of all types: 'sim', 'sim-logs', 'regr', 'cov', 'waves', 'lint', 'formal', 'emul',
    'synth' and 'timing'.  If the job type is not specified, then the last job type run is assumed.
 

@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Explore command
+"""Moore.io IP Explore Command
    Spawns a subshell in the IP directory. If 'command' is specified, it is run
    and the subshell immediately terminates.
 

@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io HDL-Style command
+"""Moore.io HDL-Style Command
    Enforces SystemVerilog/VHDL code style policies without affecting functionality.
 
 Usage:

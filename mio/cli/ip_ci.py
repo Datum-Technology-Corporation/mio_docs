@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP CI command
+"""Moore.io IP CI Command
    Tries to guess at the likely location of an IP's continuous integration URL.
 
 Usage: mio ip ci [[@<scope>]/<ip> ...]

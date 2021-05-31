@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Ls command
+"""Moore.io IP Ls Command
    Prints all the versions of IPs that are installed, as well as their dependencies when --all is specified, in a tree
    structure.
 

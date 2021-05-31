@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Unpublish command
+"""Moore.io IP Unpublish Command
    Remove an IP from the registry.  It is recommended to use `mio ip deprecate` if the intent is to encourage users to
    upgrade, or if you no longer want to maintain an IP.
 

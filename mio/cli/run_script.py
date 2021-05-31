@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Run Script command
+"""Moore.io Run Script Command
    Run Project scripts or from IPs.
 
 Usage: mio run-script [[@<scope>/]<ip>] <command> [options] [-- <args>]

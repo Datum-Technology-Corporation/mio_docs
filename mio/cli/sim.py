@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Sim(ulation) command
+"""Moore.io Sim(ulation) Command
    Performs necessary steps to run simulation of an IP. Supports Digital and Mixed-Signal (AMS) Simulation.
    
    While the controls for individual steps (library creation, compilation, elaboration and simulation) are exposed, it

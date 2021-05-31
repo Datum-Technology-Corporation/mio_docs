@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Outdated command
+"""Moore.io IP Outdated Command
    Checks registry to see if any (or, speific) installed IPs are currently outdated. By default, only the direct
    dependencies of the Project are shown. Use --all to find all outdated meta-dependencies as well.
 

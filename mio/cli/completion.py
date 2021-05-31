@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Completion command
+"""Moore.io Completion Command
    Produces outputs for shell/editor tab completion of mio commands and hdl
    symbols from populated IPs.
 

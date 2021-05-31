@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Explain command
+"""Moore.io IP Explain Command
    Prints the chain of dependencies causing a given IP to be installed in the
    current project.
 

@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Copy command
+"""Moore.io IP Copy Command
    Copy (aka clone) an IP to a new location under a new name.
 
 Usage:

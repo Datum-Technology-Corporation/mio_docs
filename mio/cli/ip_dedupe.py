@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP command
+"""Moore.io IP Command
    Attempts to simplify the overall structure by moving dependencies further up
    the tree
 

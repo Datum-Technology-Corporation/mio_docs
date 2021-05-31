@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Uninstall command
+"""Moore.io IP Uninstall Command
    Uninstalls IP(s), completely removing everything mio installed on its behalf.  It also removes the IP(s) from the
    dependencies in ip.yml.  If ip.lock.yml and/or ip.shrinkwrap.yml are present, they are updated as well.
 

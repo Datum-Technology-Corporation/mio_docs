@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Pack command
+"""Moore.io IP Pack Command
    Creates tarball (.tgz) of IP(s) and dependencies
 
 Usage:

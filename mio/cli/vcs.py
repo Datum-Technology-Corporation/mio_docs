@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io VCS command
+"""Moore.io VCS Command
    Automates version control system tasks
 
 Usage:

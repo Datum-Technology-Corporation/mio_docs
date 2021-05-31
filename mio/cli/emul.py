@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Emul(ation) command
+"""Moore.io Emul(ation) Command
    Launches emulation engine(s) against against IP(s).
 
 Usage: mio emul [[@<scope>/]<ip> ...] [options]

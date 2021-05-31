@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io IP Star command
+"""Moore.io IP Star Command
    Mark your favorite IPs. "Starring" an IP means that you have some interest in it. It's a positive way to show that
    you care. Boolean only: starring repeatedly has no additional effect.
 
