@@ -54,7 +54,7 @@
 
 Usage:
    mio sim [[@<scope>/]<ip>] [options] [-- <parameters>] [--- <tool args>]  Run specific simulation
-   mio sim *                                                                Re-run last simulation
+   mio sim !                                                                Re-run last simulation
 
 Options:
    -t <name>      , --test=<name>         Specifies test name (for UVM/VMM/OVM based IPs).
@@ -85,6 +85,7 @@ Options:
    -d          , --dry-run             Only Prints the commands mio would normally execute to perform simulation.
 
 Examples:
+   mio sim !                                            # Re-run last simulation
    mio sim --test=my_test --seed=42 --verbosity=high    # Simulate Default IP with specific test, seed and verbosity
    mio sim -l bug_dbg -f ./bug35.mlist                  # Simulate using arguments file and a simulation label
    mio sim my_ip -CE -- dp-width=32B --- --permissive   # Compile and elaborate specific IP with IP parameter and tool
@@ -94,7 +95,7 @@ Examples:
    mio sim -a nc -n ./bin/latest.sv --sdf=default.sdf   # Simulate specific design netlist with specific delays with NC
    mio sim my_ip -t my_test -b --repeat=10 --cov=*      # Simulate a specific IP and test 10 times in parallel with
                                                           random seeds and all coverage types being collected
-   mio sim * --dry-run > ./bug35.mlist                  # Create mlist file to reproduce simulation elsewhere with mio
+   mio sim ! --dry-run > ./bug35.mlist                  # Create mlist file to reproduce simulation elsewhere with mio
    mio sim @my_scope/my_ip -a vcs -Cd > ./ip.vcs.flist  # Create filelist to reproduce simulation outside mio"""
 
 
