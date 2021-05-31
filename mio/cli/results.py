@@ -17,14 +17,15 @@
    By default, selects the latest results.
 
 Usage:
-   mio results view    [<query>]        [options]  Opens results in $EDITOR or application
-   mio results delete  [<query>]        [options]  Deletes results from file system
-   mio results collate [<query>] <dst>  [options]  Combines results from separate runs (not all types)
-   mio results pack    [<query>] <dst>  [options]  Creates tarball from results
-   mio results keep    [<query>]        [options]  Remove files from VCS ignore list(s)
-   mio results move    [<query>] <dst>  [options]  
-   mio results copy    [<query>] <dst>  [options]  
-   mio results policy  [<path>]         [options]
+   mio results view     [<query>]        [options]  Opens results in $EDITOR or application
+   mio results delete   [<query>]        [options]  Deletes results from file system
+   mio results collate  [<query>] <dst>  [options]  Combines results from separate runs (not all types)
+   mio results pack     [<query>] <dst>  [options]  Creates tarball from results
+   mio results keep     [<query>]        [options]  Remove files from VCS ignore list(s)
+   mio results move     [<query>] <dst>  [options]  
+   mio results copy     [<query>] <dst>  [options]  
+   mio results policy   [<path>]         [options]
+   mio results compress [<query>]        [options]
 
 
 Options:
