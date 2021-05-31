@@ -36,7 +36,7 @@
    mio@0.2.1
       --config-env='simulators.questa.12.1.path'=QUESTA_12_1_DIR
       --config=abc=123
-   -
+   - sim
       @my_scope/my_ip@2.1.0-rc.2
       --test=my_test
       --seed=23948324
