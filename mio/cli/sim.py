@@ -30,7 +30,7 @@
    For small runs of the same test, the combination of `--batch-mode` and `--repeat` (with the absence of `--seed`) is
    recommended over adding temporarily to an IP's test suite. Ex: `mio sim my_ip -t my_test --batch --repeat=10`
    
-   The following is a sample 'mlist' file to be used with --args-file:
+   The following is a sample 'mlist' file to be used with --m-file:
    ```
    % cat bug35.mlist
       --config-env='simulators.questa.12.1.path'=QUESTA_12_1_DIR
@@ -65,7 +65,7 @@ Options:
    -a <name>      , --app=<name>          Specifies simulator application name (must be in mio Configuration).
    -g             , --gui                 Invokes simulator in graphical or 'GUI' mode.
    
-   -f <path>, --args-file=<path>   Specifies mlist from which to load mio arguments, IP parameters and Tool arguments.
+   -f <path>, --m-file=<path>      Specifies mlist from which to load mio arguments, IP parameters and Tool arguments.
    -x <path>, --tcl-script=<path>  Specifies TCL script to be executed by simulator.
    -z <path>, --snapshot=<path>    Specifies simulation snapshot to be loaded.
    -n <path>, --netlist=<path>     Specifies design netlist to use.
