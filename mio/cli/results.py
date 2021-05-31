@@ -11,16 +11,21 @@
 
 
 """Moore.io Results Command
-   Manages results from EDA tools the following types: 'all', 'sim', 'sim-logs', 'regr', 'cov', 'waves', 'lint',
+   Manages results from EDA tools like a database. The following types are currently available: 'all', 'sim', 'sim-logs', 'regr', 'cov', 'waves', 'lint',
    'formal', 'emul', 'synth' and 'timing'.  If the job type is not specified, then the last job type run is assumed.
    
    By default, selects the latest results.
 
 Usage:
-   mio results view    [<type>] [[@<scope>]/<ip> ... | *] [options]  Opens results in $EDITOR or application
-   mio results delete  [<type>] [[@<scope>]/<ip> ... | *] [options]  Deletes results from file system
-   mio results collate [<type>] [[@<scope>]/<ip> ... | *] [options]  Combines results from separate runs (not all types)
-   mio results pack    [<type>] [[@<scope>]/<ip> ... | *] [options]  Creates tarball from results
+   mio results view    [<query>]        [options]  Opens results in $EDITOR or application
+   mio results delete  [<query>]        [options]  Deletes results from file system
+   mio results collate [<query>] <dst>  [options]  Combines results from separate runs (not all types)
+   mio results pack    [<query>] <dst>  [options]  Creates tarball from results
+   mio results keep    [<query>]        [options]  Remove files from VCS ignore list(s)
+   mio results move    [<query>] <dst>  [options]  
+   mio results copy    [<query>] <dst>  [options]  
+   mio results policy  [<path>]         [options]
+
 
 Options:
    -F       , --force            Forces the deletion of files (if read-only and/or locked)
