@@ -17,7 +17,7 @@ Usage: mio set-script [[@<scope>/]<ip>] <command> <script>
 
 Examples:
    mio set-script my-command my_script.py                      # Register Project script
-   mio set-script @my-scope/my_ip this_command that_script.py  # Register script with IP"""
+   mio set-script @my_scope/my_ip this_command that_script.py  # Register script with IP"""
 
 
 ########################################################################################################################

@@ -23,7 +23,7 @@ Options:
   
 Examples:
    mio ip copy cloned_ip                                       # Copy Default IP locally
-   mio ip copy @my-scope/my_ip my_cloned_ip -d /home/cbabbage  # Copy scoped IP to specific directory
+   mio ip copy @my_scope/my_ip my_cloned_ip -d /home/cbabbage  # Copy scoped IP to specific directory
    mio ip copy src_ip dst_ip -g -r https://my-registry.com     # Copy IPs globally from specific Registry"""
 
 

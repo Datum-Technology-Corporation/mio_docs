@@ -26,12 +26,12 @@
    An IP URI is either:
       * Latest IP version in a registry: `` (empty string)
       * Tagged IP version in a registry: `[@<scope>/]<name>@<tag>`
-           Ex: `@my-scope/my_ip@latest`
+           Ex: `@my_scope/my_ip@latest`
       * Specific IP version in a registry: `[@<scope>/]<name>@<major>.<minor>.<patch>`
-           Ex: `@my-scope/my_ip@1.0.0`
+           Ex: `@my_scope/my_ip@1.0.0`
       * A version range for an IP in a registry: `[@<scope>/]<name>@"<version range>"` (single quotes are also valid)
-           Ex: `@my-scope/my_ip@">=0.1.0 <0.2.0"`
-               `@my-scope/my_ip@"16 - 17"
+           Ex: `@my_scope/my_ip@">=0.1.0 <0.2.0"`
+               `@my_scope/my_ip@"16 - 17"
       * The latest version of an IP located in a repository: `<protocol>://<hostname>[:<port>]/<path>`
            Ex: `git://github.com/my-org/my-repo.git`
       * The commit-ish for an IP located in a repository: `<protocol>://<hostname>[:<port>]/<path>#<commit-ish>`
@@ -59,7 +59,7 @@ Examples:
    mio ip install                                                          # Install dependencies for project or local IP
    mio ip install some_ip@1.0.0                                            # Install a specific version of an IP in the registry
    mio ip install git://github.com/some-org/some-repo.git@^1.0             # Install approximately version 1.0 of an IP in a git repository
-   mio ip install my_alias:@some-scope/some_ip@stable -r https://reg-url/  # Install a tagged IP version from a specific registry under a specific name (i.e. alias)"""
+   mio ip install my_alias:@some_scope/some_ip@stable -r https://reg-url/  # Install a tagged IP version from a specific registry under a specific name (i.e. alias)"""
 
 
 ########################################################################################################################

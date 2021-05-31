@@ -10,7 +10,7 @@
 ########################################################################################################################
 
 
-"""Moore.io Synth command
+"""Moore.io Synth(esis) command
    Launches synthesis tool against target IPs.
 
 Usage: mio synth [[@<scope>/]<ip> ...] [options]

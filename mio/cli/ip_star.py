@@ -21,7 +21,7 @@ Options:
    -r <url> , --registry=<url>  Specifies the registry the IP(s) belong to.
   
 Examples:
-   mio ip star @my-scope/my_ip                             # Mark an IP as a favorite
+   mio ip star @my_scope/my_ip                             # Mark an IP as a favorite
    mio ip star some_ip another_ip -r http://registry.com/  # Mark an IPs as favorites from a specific registry"""
 
 

@@ -24,7 +24,7 @@ Aliases: run, rum, urn
 
 Examples:
    mio run-script my-command                                  # Run specific Project script with no arguments
-   mio run-script @my-scope/my_ip that_command -- -abc --d=2  # Run script from specific IP with inline arguments
+   mio run-script @my_scope/my_ip that_command -- -abc --d=2  # Run script from specific IP with inline arguments
    mio run-script this_command -is --args-file=./my_args.txt  # Run Project script silently with arguments from file"""
 
 

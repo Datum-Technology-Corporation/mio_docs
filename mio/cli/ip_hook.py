@@ -34,7 +34,7 @@ Usage:
 Examples:
    mip ip hook add my_ip  https://example.com/ my-shared-secret     # Add a hook to watch an IP for changes
    mip ip hook add ~cbabbage https://example.com/ my-shared-secret  # Add a hook to watch IPs belonging to the user cbabbage
-   mip ip hook add @my-scope https://example.com/ my-shared-secret  # Add a hook to watch IPs in the scope @mio
+   mip ip hook add @my_scope https://example.com/ my-shared-secret  # Add a hook to watch IPs in the scope @mio
    mip ip hook ls                                                   # List all your active hooks
    mip ip hook ls my_ip                                             # List your active hooks for the my_ip IP
    mip ip hook update id-deadbeef https://my-new-website.here/      # Update an existing hook's url

@@ -36,7 +36,7 @@ Options:
 
 Examples:
    mio user add                                                     # Add new user to default Registry
-   mio user login -o 123123 -s my-scope -r https://my-registry.com  # Log in using otp code to specific scope
+   mio user login -o 123123 -s my_scope -r https://my-registry.com  # Log in using otp code to specific scope
    mio user profile get email                                       # Print user email address
    mio user profile set last-name Babbage                           # Set user property
    mio user profile get -f xml                                      # Print entire user profile in XML format

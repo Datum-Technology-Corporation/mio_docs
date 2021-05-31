@@ -24,7 +24,7 @@ Options:
 Aliases:  remove, rm
 
 Examples:
-   mio ip uninstall @my-scope/my_ip  # Uninstall single IP
+   mio ip uninstall @my_scope/my_ip  # Uninstall single IP
    mio ip uninstall a_ip b_ip -gn    # Removes installed IP files in the global directory, but does not update IP metadata"""
 
 

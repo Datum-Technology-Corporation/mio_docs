@@ -33,8 +33,8 @@ Options:
       have been published.
   
 Examples:
-   mio ip publish @my-scope/my_public_ip                          # Publish public IP
-   mio ip publish @my-scope/my_secret_ip -a restricted -t stable  # Publish restricted IP with a tag
+   mio ip publish @my_scope/my_public_ip                          # Publish public IP
+   mio ip publish @my_scope/my_secret_ip -a restricted -t stable  # Publish restricted IP with a tag
    mio ip publish -d -o 189273973184                              # Perform a publish dry-run with an inlined OTP code"""
 
 

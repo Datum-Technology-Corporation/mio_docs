@@ -31,9 +31,9 @@ Options:
 
 Examples:
    mio ip init                                                             # Create ip.yml through stock questionnaire
-   mio ip init @my-scope/my_ip                                             # Init a scoped and named IP
+   mio ip init @my_scope/my_ip                                             # Init a scoped and named IP
    mio ip init my-generator -w ./some_path --skip-questions                # Use a generator but skip the questions and use a custom path
-   mio ip init @my-scope/my_ip --args-file=./my_args.txt -- -a --b=1 -c=2  # Use stock behavior, but answer questions with an arg file and inline arguments"""
+   mio ip init @my_scope/my_ip --args-file=./my_args.txt -- -a --b=1 -c=2  # Use stock behavior, but answer questions with an arg file and inline arguments"""
 
 
 ########################################################################################################################

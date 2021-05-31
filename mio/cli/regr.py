@@ -10,18 +10,27 @@
 ########################################################################################################################
 
 
-"""Moore.io Regr command
-   Executes regression for target IP
+"""Moore.io Regr(ession) command
+   Executes regression(s) against target IP(s).
 
 Usage:
-   mio regr [<ip>] <regression name>      [options]
-   mio regr [<ip>  <regression name> ...] [options]
+   mio regr [[@<scope>/]<ip>] <regression>   [options] [-- <parameters>]  Single IP and regression
+   mio regr [@<scope>/]<ip> <regression> ... [options]                    Multiple regressions against the same IP
+   mio regr [@<scope>/]<ip>/<regression> ... [options]                    Multiple regressions against multiple IPs
 
 Options:
+   -f <path>, --params-file=<path>
+      Specifies regression parameters file (inline parameters take precedence).
+   
+   -e <address>, --email=<address>
+      Specifies email address(es) (comma separated) to contact once regression(s) have finished.
    
 Examples:
-   
-"""
+   mio regr sanity                             # Run specific regression against Default IP
+   mio regr @my_scope/my_ip nightly            # Run specific regression against specific IP
+   mio regr nightly -f P2.txt -- multiplier=1  # Run specific regression against specific IP with mixed parameters
+   mio regr client_1_bugs client_2_features    # Launch multiple regressions in parallel against Default IP
+   mio regr my_ip/sanity some_ip/sanity        # Launch multiple regressions in parallel against multiple IPs"""
 
 
 ########################################################################################################################
@@ -37,6 +46,6 @@ import logging
 ########################################################################################################################
 def main(upper_args):
    logging.debug("regr - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("regr - args: " + str(args))
 ########################################################################################################################

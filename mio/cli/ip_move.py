@@ -23,7 +23,7 @@ Options:
   
 Examples:
    mio ip move my_new_named_ip                               # Rename Default IP
-   mio ip move @my-scope/my_ip --destination=/home/cbabbage  # Move scoped IP out of project
+   mio ip move @my_scope/my_ip --destination=/home/cbabbage  # Move scoped IP out of project
    mio ip move src_ip dst_ip -r https://my-registry.com      # Rename IP in specific Registry"""
 
 

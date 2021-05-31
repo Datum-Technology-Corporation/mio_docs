@@ -31,7 +31,7 @@ Options:
 Examples:
    mio ip diff version stable                                            # Diff Default IP against tag
    mio ip diff version latest  "1.2"                                     # Diff a tag against a specific version of the Default IP
-   mio ip diff spec @my-scope/my_ip@latest @my-cope/my_ip_branch@latest  # Diff the latest version of an IP against its branch"""
+   mio ip diff spec @my_scope/my_ip@latest @my-cope/my_ip_branch@latest  # Diff the latest version of an IP against its branch"""
 
 
 ########################################################################################################################

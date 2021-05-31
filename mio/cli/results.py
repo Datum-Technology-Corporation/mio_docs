@@ -11,21 +11,31 @@
 
 
 """Moore.io Results command
-   Manages results from EDA tools
+   Manages results from EDA tools of all types: 'sim', 'regr', 'cov', 'waves', 'lint', 'formal', 'emul', 'synth' and
+   'timing'.  If the job type is not specified, then the last job type run is assumed.
 
 Usage:
-   mio results delete [<ip>]
-   mio results view 
-   mio results pack
-   mio results publish
-   mio results collate
+   mio results view    [<type>] [[@<scope>]/<ip> ... | *] [options]  Opens results in $EDITOR or application
+   mio results delete  [<type>] [[@<scope>]/<ip> ... | *] [options]  Deletes results from file system
+   mio results collate [<type>] [[@<scope>]/<ip> ... | *] [options]  Combines results from separate runs (not all types)
+   mio results pack    [<type>] [[@<scope>]/<ip> ... | *] [options]  Creates tarball from results
 
 Options:
-   
+   -F, --force  Forces the deletion of files (if read-only and/or locked)
+   -a, --all    Selects all results for the command, not just the latest results
   
 Examples:
-   
-"""
+   mio results view                      # View latest results for Default IP
+   mio results view sim                  # View latest simulation results for Default IP
+   mio results view regr *               # View latest regression results for all IPs
+   mio results view lint some_ip         # View latest linting results for a specific IP
+   mio results view cov @my_scope/my_ip  # View latest coverage data for a specific IP
+   mio results delete -F                 # Forcibly delete the latest results for Default IP
+   mio results delete waves --all        # Delete all waveforms for Default IP
+   mio results delete --all              # Delete all results for Default IP
+   mio results delete * --all            # Delete all results for all IPs
+   mio results collate cov my_ip         # Collate latest coverage data for a specific IP
+   mio results pack synth                # Creates tarball with latest synthesis results for Default IP"""
 
 
 ########################################################################################################################
@@ -41,6 +51,6 @@ import logging
 ########################################################################################################################
 def main(upper_args):
    logging.debug("results - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("results - args: " + str(args))
 ########################################################################################################################

@@ -24,7 +24,8 @@ Options:
    -l, --lint    Deletes linting artifacts
    -f, --formal  Deletes formal verification artifacts
    -y, --synth   Deletes logic synthesis verification artifacts
-   -t, --sta     Deletes static timing analysis artifacts
+   -e, --emul    Deletes emulation artifacts
+   -t, --timing  Deletes timing analysis artifacts
    
 Examples:
    mio clean                                  # Deletes latest artifacts for Default IP

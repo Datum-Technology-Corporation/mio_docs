@@ -24,7 +24,7 @@ Options:
   
 Examples:
    mio ip prune                               # Prune dependency tree for Default IP
-   mio ip prune @some-scope/some_ip my_ip -p  # Prune multiple IP trees
+   mio ip prune @some_scope/some_ip my_ip -p  # Prune multiple IP trees
    mio ip prune *                             # Prune all IP trees"""
 
 

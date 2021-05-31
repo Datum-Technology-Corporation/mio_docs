@@ -26,8 +26,8 @@ Options:
       Unpublish and entire IP. Will be prompted for confirmation.
 
 Examples:
-   mio ip unpublish @my-scope/my_ip@1.0.0           # Unpublish specific version of an IP
-   mio ip unpublish @my-scope/my_doomed_ip --force  # Unpublish entire IP"""
+   mio ip unpublish @my_scope/my_ip@1.0.0           # Unpublish specific version of an IP
+   mio ip unpublish @my_scope/my_doomed_ip --force  # Unpublish entire IP"""
 
 
 ########################################################################################################################

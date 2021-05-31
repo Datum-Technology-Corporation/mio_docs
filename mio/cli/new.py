@@ -1,4 +1,4 @@
-######################################## Copyright 2021 Datum Technology Corporation
+# Copyright 2021 Datum Technology Corporation
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 ########################################################################################################################
 # Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
@@ -11,16 +11,19 @@
 
 
 """Moore.io New command
-   Starts Source code template creation dialog
+   Invokes the mio code generator system.  If no generator name is specified, the user is prompted to select from a
+   list of what is currently installed (and applicable in this context).  All arguments right of '--' are passed
+   untouched to the generator.
 
-Usage: mio new [<ip>] [<name>] [--template=<name> | --args-file=<path>]
+Usage: mio new [[@<scope>/]<ip>] [[@<scope>/]<generator>] [options] [-- <args>]
 
 Options:
-   
+   -f <path>, --args-file=<path>  Specifies arguments file (inline arguments take precedence)
 
 Examples:
-   
-"""
+   mio new uvm-test -- name=smoke                       # Create new UVM test for Default IP named 'smoke'
+   mio new @my_scope/my_ip reg-block -a ./reg-spec.yml  # Create new Register Block for specific IP with an arguments file
+   mio new some_ip reg -- name=abc size=4B              # Create new Register for a specific IP with inline arguments"""
 
 
 ########################################################################################################################

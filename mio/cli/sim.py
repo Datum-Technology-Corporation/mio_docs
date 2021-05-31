@@ -10,31 +10,92 @@
 ########################################################################################################################
 
 
-"""Moore.io Sim command
-   Performs necessary steps to perform simulation of IP
+"""Moore.io Sim(ulation) command
+   Performs necessary steps to run simulation of an IP. Supports Digital and Mixed-Signal (AMS) Simulation.
+   
+   While the controls for individual steps (library creation, compilation, elaboration and simulation) are exposed, it
+   is recommended to let `mio sim` manage this process as much as possible.  In the unlikely event of corrupt and/or
+   locked simulator artifacts, see `mio clean`.  Combining any of the step-control arguments (-L, -C, -E, -S) with
+   missing steps can result in unpredictable behavior and is not recommended (ex: `-LS`).
+   
+   Parameters (`<parameters>`) are parsed by mio which performs the conversions to specific vendor tool arguments, as
+   specified by IP metadata (`ip.yml`) and Moore.io Configuration (`.mio.toml`).  Parameters that are not recognized are
+   passed untouched to the end executable, along with all Tool Arguments (`<tool args>`).
+   
+   Unless configured otherwise, mio will attempt to parallelize every step of the process as much as the IP dependency
+   graph and computing resources allow.  Moore.io must first be configured for your computing setup: by default, all
+   jobs are run on the machine launching the `mio sim` command.  Job Scheduling software setup is captured via
+   `mio config`.
+   
+   For small runs of the same test, the combination of `--batch-mode` and `--repeat` (with the absence of `--seed`) is
+   recommended over adding temporarily to an IP's test suite. Ex: `mio sim my_ip -t my_test --batch --repeat=10`
+   
+   The following is a sample 'mlist' file to be used with --args-file:
+   ```
+   % cat bug35.mlist
+      --config-env='simulators.questa.12.1.path'=QUESTA_12_1_DIR
+   -mio@0.2.1
+      @my_scope/my_ip@2.1.0-rc.2
+      --test=my_test
+      --seed=23948324
+      --waves='/dp/egress/*'
+      --app=questa@12.1
+   --
+      dp-width=32B
+      phy-bypass=yes
+      +define+TEMP_FIX=1  # Single line comments are allowed
+      +NUM_PKTS=232
+      +MIN_PKT_SIZE=32
+      +MAX_PKT_SIZE=500
+   ---
+      --permissive
+      --hotfix232
+   ```
 
-Usage: mio sim [<ip>] [options]
+Usage:
+   mio sim [[@<scope>/]<ip>] [options] [-- <parameters>] [--- <tool args>]  Run specific simulation
+   mio sim *                                                                Re-run last simulation
 
 Options:
-    -t <name>   , --test=<name>
-    -s <integer>, --seed=<integer>
-    -v <level>  , --verbosity=<level>
-    -w          , --waves
-    -g          , --gui
-    -c <flags>  , --cov=<flags>
-    -O <level>  , --optimization=<level>
-    -L          , --library-creation-only
-    -C          , --compilation-only
-    -E          , --elaboration-only
-    -S          , --simulation-only
-    -N <name>   , --netlist=<name>
-    -T <name>   , --sdf=<name>
-  
+   -t <name>      , --test=<name>         Specifies test name (for UVM/VMM/OVM based IPs).
+   -s <integer>   , --seed=<integer>      Specifies simulation seed.  A random one will be chosen if not specified.
+   -v <level>     , --verbosity=<level>   Specifies verbosity level (for UVM/VMM/OVM based IPs).
+   -w [<selector>], --waves[=<selector>]  Captures simulation waveforms with optional selector (ex: '/ab/*;/c/d;/e').
+   -c <flags>     , --cov=<flags>         Specifies coverage types to be collected: b,c,f,s,t,x or * (all) (ex: 'bct').
+   -a <name>      , --app=<name>          Specifies simulator application name (must be in mio Configuration).
+   -g             , --gui                 Invokes simulator in graphical or 'GUI' mode.
+   
+   -f <path>, --args-file=<path>   Specifies mlist from which to load mio arguments, IP parameters and Tool arguments.
+   -x <path>, --tcl-script=<path>  Specifies TCL script to be executed by simulator.
+   -z <path>, --snapshot=<path>    Specifies simulation snapshot to be loaded.
+   -n <path>, --netlist=<path>     Specifies design netlist to use.
+   -i <path>, --sdf=<path>         Specifies timing annotations file to use for simulation.
+   
+   -L, --library-creation-only  Only creates simulator libraries for each IP.
+   -C, --compilation-only       Only performs compilation of each IP.
+   -E, --elaboration-only       Only performs elaboration for target IP.
+   -S, --simulation-only        Only launches simulation for target IP.
+   -F, --force-steps            Forces mio to go through all the steps necessary.
+   
+   -l <string> , --label=<string>      Specifies simulation label.  Used as a prefix in file and/or directory names.
+   -q          , --quiet               Mutes simulator output to stdout.
+   -b          , --batch-mode          Invokes simulator runs in parallel (usually combined with --repeat).
+   -r <integer>, --repeat=<integer>    Specifies number of simulation repeats.
+   -p <path>   , --results-dir=<path>  Specifies results directory path.  A symlink is created in the local results.
+   -d          , --dry-run             Only Prints the commands mio would normally execute to perform simulation.
+
 Examples:
-   mio sim --seed 42 --verbosity high   # Simulates default IP with default test, seed 42 and a high verbosity
-   mio sim my_ip -t smoke -s 1 -w --cov=f
-   mio sim uvmt_pcie_rc -t scenario_678 -s 8477203 --gui
-   mio sim -CE --netlist=latest.sv --sdf=default.sdf"""
+   mio sim --test=my_test --seed=42 --verbosity=high    # Simulate Default IP with specific test, seed and verbosity
+   mio sim -l bug_dbg -f ./bug35.mlist                  # Simulate using arguments file and a simulation label
+   mio sim my_ip -CE -- dp-width=32B --- --permissive   # Compile and elaborate specific IP with IP parameter and tool
+                                                          argument
+   mio sim some_ip -t my_test -a vcs -x dbg_sigs.tcl    # Run a specific test with VCS and a specific TCL script
+   mio sim -S -t my_test -s 1 --waves='/my_block/*'     # Only simulate a specific test, seed with custom wave capture
+   mio sim -a nc -n ./bin/latest.sv --sdf=default.sdf   # Simulate specific design netlist with specific delays with NC
+   mio sim my_ip -t my_test -b --repeat=10 --cov=*      # Simulate a specific IP and test 10 times in parallel with
+                                                          random seeds and all coverage types being collected
+   mio sim * --dry-run > ./bug35.mlist                  # Create mlist file to reproduce simulation elsewhere with mio
+   mio sim @my_scope/my_ip -a vcs -Cd > ./ip.vcs.flist  # Create filelist to reproduce simulation outside mio"""
 
 
 ########################################################################################################################
@@ -50,6 +111,6 @@ import logging
 ########################################################################################################################
 def main(upper_args):
    logging.debug("sim - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("sim - args: " + str(args))
 ########################################################################################################################
