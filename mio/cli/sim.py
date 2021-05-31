@@ -33,8 +33,10 @@
    The following is a sample 'mlist' file to be used with --m-file:
    ```
    % cat bug35.mlist
+   mio@0.2.1
       --config-env='simulators.questa.12.1.path'=QUESTA_12_1_DIR
-   -mio@0.2.1
+      --config=abc=123
+   -
       @my_scope/my_ip@2.1.0-rc.2
       --test=my_test
       --seed=23948324
