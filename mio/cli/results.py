@@ -11,43 +11,54 @@
 
 
 """Moore.io Results Command
-   Manages results from EDA tools like a database. The following types are currently available: 'all', 'sim',
-   'sim-logs', 'regr', 'cov', 'waves', 'lint', 'formal', 'emul', 'synth' and 'timing'.  If the job type is not
-   specified, then the last job type run is assumed.
+   Manages results from EDA tools like a database with actions taken against result files selected via a simple query
+   language.  Teams and organizations can capture their retention policies and choose when to execute them via
+   `mio config`.  These can also be run manually at any time via `mio results policy <name>`.
    
-   By default, selects the latest results.
+   The query language, a modified version of YAML Path
+   (https://github.com/wwkimball/yamlpath/wiki/Segments-of-a-YAML-Path) is used to select data from the results
+   database to be acted upon (the 'action'):
+      Ex: `mio results compress all[size >= 50]`    # Compresses all results files from all IPs over 50 Megabytes
+          `mio results delete   my_ip.sim[age > 3]` # Deletes sim results older than 3 days for a specific IP
+          `mio results view     sim`                # View latest sim results
+   
+   The following actions are currently available: 'view', 'compress', 'decompress', 'delete', 'pack', 'collate', 'move',
+   'copy'.  If no action is specified, 'view' is assumed.
+   
+   The following job types are currently available: 'all', 'sim', 'simlogs', 'cov', 'waves', 'regr', 'lint', 'formal',
+   'emul', 'synth' and 'timing'.  If the job type is not specified, then the last job type run is assumed.  Specifying
+   'sim' selects {'simlogs', 'cov', 'waves'}.
+   
+   By default, the latest result is selected.
 
 Usage:
-   mio results view     [<query>]        [options]  Opens results in $EDITOR or application
-   mio results delete   [<query>]        [options]  Deletes results from file system
-   mio results collate  [<query>] <dst>  [options]  Combines results from separate runs (not all types)
-   mio results pack     [<query>] <dst>  [options]  Creates tarball from results
-   mio results keep     [<query>]        [options]  Remove files from VCS ignore list(s)
-   mio results move     [<query>] <dst>  [options]  
-   mio results copy     [<query>] <dst>  [options]  
-   mio results policy   [<path>]         [options]
-   mio results compress [<query>]        [options]
-
+   mio results policy     [options] [<name>]           Applies results retention policy as specified in Configuration
+   mio results [view]     [options] [<query>]          Opens results in $EDITOR or application specific to data type
+   mio results compress   [options] [<query>]          Replaces files with tarballs (ex: `a.log -> a.log.tgz`)
+   mio results decompress [options] [<query>]          Replaces tarballs with files (ex: `a.log.tgz -> a.log`)
+   mio results delete     [options] [<query>]          Deletes results from file system
+   mio results collate    [options] [<query>] <label>  Combines results from separate runs (not all types)
+   mio results pack       [options] [<query>] <dst>    Creates single tarball(s) (.tgz) from results
+   mio results move       [options] [<query>] <dst>    Move results into new file system location
+   mio results copy       [options] [<query>] <label>  Copy results under a label for archiving
 
 Options:
-   -F       , --force            Forces the deletion of files (if read-only and/or locked)
-   -a       , --all              Selects all results for the command, not just the latest results
-   -l <int> , --latest=<int>     Selects the N latest results [default: 1]
-   -o <int> , --oldest=<int>     Selects the N oldest results [default: 1]
-   -p <path>, --location=<path>  Location for results of 'collate' and 'pack' commands
+   -e <cmd>, --editor=<cmd>  Specify the editor to use for `mio results view`
+   -F      , --force         Forces the deletion of files (if read-only and/or locked)
+   -d      , --delete-orig   Deletes the original files when packing
   
 Examples:
-   mio results view                          # View latest results for Default IP
-   mio results view sim -l 5                 # View last 5 simulation results for Default IP
-   mio results view regr *                   # View latest regression results for all IPs
-   mio results view lint some_ip             # View latest linting results for a specific IP
-   mio results view cov @my_scope/my_ip      # View latest coverage data for a specific IP
-   mio results delete -F                     # Forcibly delete the latest results for Default IP
-   mio results delete waves --all            # Delete all waveforms for Default IP
-   mio results delete all --oldest=2         # Delete all but the oldest 2 results for all types for Default IP
-   mio results delete regr * --latest        # Delete all but the latest regression results for all IPs
-   mio results collate cov my_ip -p ~/cov    # Collate latest coverage data for a specific IP
-   mio results pack synth -p ./netlists.tgz  # Creates tarball with latest synthesis results for Default IP"""
+   mio results view                           # View latest results for Default IP
+   mio results view my_ip.sim                 # View latest simulation results for a specific IP
+   mio results -e vmngr *.regr.cov            # View latest regression coverage results for all Project IPs in `vmngr`
+   mio results compress some_ip.simlogs       # Compress all the simulation logs for a specific IP
+   mio results decompress @my_scope/my_ip     # Decompress all results for a specific IP
+   mio results delete -F *.sim[age>7]         # Forcibly delete simulation results older than a week for all Project IPs
+   mio results delete *.waves[>500]           # Delete all waveforms over 500 Megabytes in size
+   mio results collate my_ip.cov[age<=.1]     # Merge coverage data of all simulations in the last hour for an IP
+   mio results pack *.regr[age<=7] ~/bak.tgz  # Pack all regression results from the last week
+   mio results move *.waves[age>1] /fs01/arc  # Move all waves older than a day and symlink them locally
+   mio results copy *.synth /fs01/netlists    # Archive all Project IP netlists"""
 
 
 ########################################################################################################################
@@ -63,6 +74,6 @@ import logging
 ########################################################################################################################
 def main(upper_args):
    logging.debug("results - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=False)
+   args = docopt(__doc__, argv=upper_args, options_first=True)
    logging.debug("results - args: " + str(args))
 ########################################################################################################################
