@@ -59,7 +59,7 @@ Options:
    -t <name>      , --test=<name>         Specifies test name (for UVM/VMM/OVM based IPs).
    -s <integer>   , --seed=<integer>      Specifies simulation seed.  A random one will be chosen if not specified.
    -v <level>     , --verbosity=<level>   Specifies verbosity level (for UVM/VMM/OVM based IPs).
-   -w [<selector>], --waves[=<selector>]  Captures simulation waveforms with optional selector (ex: '/ab/*;/c/d;/e').
+   -w [<selector>], --waves[=<selector>]  Captures simulation waveforms with optional selector. [default: '*']
    -c <flags>     , --cov=<flags>         Specifies coverage types to be collected: b,c,f,s,t,x or * (all) (ex: 'bct').
    -a <name>      , --app=<name>          Specifies simulator application name (must be in mio Configuration).
    -g             , --gui                 Invokes simulator in graphical or 'GUI' mode.
