@@ -21,8 +21,8 @@ Options:
    -f <type>, --format=<type>   Specifies output format: text, yml, xml, json, csv [default: text]
   
 Examples:
-   mio ip stars                                   # View your favorite IP(s)
-   mio ip stars cbabbage -r http://registry.com/  # View favorite IP(s) of a user from a specific registry"""
+   mio ip stars                                  # View your favorite IP(s)
+   mio ip stars aturing -r http://registry.com/  # View favorite IP(s) of a specific user from a specific registry"""
 
 
 ########################################################################################################################

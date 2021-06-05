@@ -79,7 +79,7 @@ Options:
    -l <string> , --label=<string>      Specifies results label.  Used as a prefix/suffix in file and/or directory names.
    -q          , --quiet               Mutes simulator output to stdout.
    -b          , --batch-mode          Runs simulations in parallel (usually combined with --repeat).
-   -r <integer>, --repeat=<integer>    Specifies number of simulation repeats.
+   -r <integer>, --repeat=<integer>    Specifies number of simulation repeats. [default: 1]
    -p <path>   , --results-dir=<path>  Specifies results directory path.  A symlink is created in the local results.
    -d          , --dry-run             Only prints the commands mio would normally execute to perform simulation.
    -m          , --m-run               Only prints the mlist file contents for the mio command.

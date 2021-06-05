@@ -29,12 +29,12 @@ Options:
       Output search results as lines with tab-separated columns.
 
 Examples:
-   mio org set my-org @cbabbage         # Add a new developer to an org
-   mio org set my-org @cbabbage admin   # Add a new admin to an org (or change a developer to an admin)
-   mio org rm  my-org cbabbage          # Remove a user from an org
-   mio org ls  my-org                   # List all users in an org
-   mio org ls  my-org -f json           # List all users in JSON format
-   mio org ls  my-org @cbabbage         # See what role a user has in an org"""
+   mio org set my-org @cbabbage       # Add a new developer to an org
+   mio org set my-org @aturing admin  # Add a new admin to an org (or change a developer to an admin)
+   mio org rm  my-org cbabbage        # Remove a user from an org
+   mio org ls  my-org                 # List all users in an org
+   mio org ls  my-org -f json         # List all users in JSON format
+   mio org ls  my-org @aturing        # See what role a user has in an org"""
 
 
 ########################################################################################################################

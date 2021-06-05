@@ -56,7 +56,7 @@ Examples:
    mio ip access revoke other_team my_ip                        # Revoke all access to 'other_team' for 'my_ip'
    mio ip access 2fa-required my_ip -r https://my-registry.com  # Require 2-factor authentication for my_ip in a custom registry
    mio ip access edit my_ip                                     # Open access rights for 'my_ip' in $EDITOR
-   mio ip access ls-ip cbabbage                                 # Lists IPs user 'cbabbage' has access to"""
+   mio ip access ls-ip aturing                                  # Lists IPs specific user has access to"""
 
 
 ########################################################################################################################
