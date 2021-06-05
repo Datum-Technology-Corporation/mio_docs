@@ -51,7 +51,7 @@ Examples:
    mio results view                           # View latest results for Default IP
    mio results view my_ip.sim                 # View latest simulation results for a specific IP
    mio results -e vmngr *.regr.cov            # View latest regression coverage results for all Project IPs in `vmngr`
-   mio results compress some_ip.simlogs       # Compress all the simulation logs for a specific IP
+   mio results compress some_ip.simlogs[*]    # Compress all the simulation logs for a specific IP
    mio results decompress @my_scope/my_ip     # Decompress all results for a specific IP
    mio results delete -F *.sim[age>7]         # Forcibly delete simulation results older than a week for all Project IPs
    mio results delete *.waves[>500]           # Delete all waveforms over 500 Megabytes in size
