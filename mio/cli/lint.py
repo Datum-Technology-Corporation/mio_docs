@@ -20,7 +20,7 @@
       --config-env='username'=USER
    $ lint
       @my_scope/my_ip@2.1.0-rc.2
-      --app=oski@3.1.15
+      --app=spyglass@3.1.15
    --
       dp-width=32B
       phy-bypass=yes

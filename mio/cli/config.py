@@ -11,28 +11,43 @@
 
 
 """Moore.io Config Command
-   Reads/writes to/from mio configuration space.
+   Reads/writes to/from mio configuration space.  Moore.io gets it configuration settings from the command line,
+   environment variables, `.mio.toml` files, and in some cases, `ip.yml` file(s).
    
-   Moore.io gets it configuration settings from the command line, environment
-   variables, `.mio.toml` files, and in some cases, `ip.yml` file(s).
+   Adding `-c <name>[=<value>] | --config=<name>[=<value>]` and/or `--config-env=<name>=<envvar>` to your CLI command
+   (`mio <config-args> <command>`) will add to the Configuration space with the highest level of precedence.
    
-   See '.mio.toml' for more information about the mio configuration files.
-
+   Environment variables prefixed with `MIO_CONFIG_` (case insensitive) will be interpreted as mio Configuration
+   parameters.  Any environment variables not given a value will be presumed ass boolean, and given the value `true`.
+   
+   The remaining order goes as follows (in descending order of importance):
+      * Per-project configuration file (`/path/to/my/project/.mio.toml`)
+      * Per-user configuration file (defaults to `$HOME/.mio.toml`; configurable via CLI option `--userconfig` or
+        environment variable `$MIO_CONFIG_USERCONFIG`)
+      * Global configuration file (defaults to `$PREFIX/etc/.mio.toml`; configurable via CLI option `--globalconfig` or
+        environment variable `$MIO_CONFIG_GLOBALCONFIG`)
+      * Built-in configuration file (`/path/to/mio/.mio.toml`)
+      * Internal defaults (`mio config list -i`)
+   
 Usage:
-   mio config set    <key>=<value> ...  Writes configuration key/value pair(s)
-   mio config get    <key>         ...  Prints configuration key(s)
-   mio config delete <key>         ...  Deletes key(s)
-   mio config list                      Prints all keys and their values
-   mio config edit   [--global]         Opens 'local' .mio.toml configuration file in default editor.
+   mio config set    [options] <key>=<value> ...  Writes configuration key/value pair(s)
+   mio config get    [options] <key>         ...  Prints configuration key(s)
+   mio config delete [options] <key>         ...  Deletes key(s)
+   mio config list   [options]                    Prints all keys and their values
+   mio config edit   [options]                    Open .mio.toml configuration file in editor
 
 Options:
-   -g, --global   Edits the global configuration file
+   -p       , --project        Edits the project configuration file
+   -u       , --user           Edits the user configuration file
+   -g       , --global         Edits the global configuration file
+   -i       , --internal       Gets/Lists internal default Configuration
+   -e <cmd> , --editor=<cmd>   Override default editor (`$EDITOR`)
+   -f <type>, --format=<type>  Specifies output format: text, yml, xml, json, csv [default: text]
   
 Examples:
-   mio config set default-ip=uvmt_ss_mem   # Sets Default IP to uvmt_ss_mem
-   mio config set default-test=smoke       # Sets Default Test to 'smoke'
-   mio config get default-simulator        # Prints Default Simulator to stdout
-"""
+   mio config set default-ip=my_ip -p   # Set Default IP
+   mio config set default-test=my_test  # Set Default Test
+   mio config get default-simulator     # Print Default Simulator to stdout"""
 
 
 ########################################################################################################################
@@ -48,6 +63,6 @@ import logging
 ########################################################################################################################
 def main(upper_args):
    logging.debug("config - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=False)
+   args = docopt(__doc__, argv=upper_args, options_first=True)
    logging.debug("config - args: " + str(args))
 ########################################################################################################################

@@ -56,10 +56,15 @@ Options:
    -r <url> , --registry=<url>  Specifies the registry to install IP from.
 
 Examples:
-   mio ip install                                                          # Install dependencies for project or local IP
-   mio ip install some_ip@1.0.0                                            # Install a specific version of an IP in the registry
-   mio ip install git://github.com/some-org/some-repo.git@^1.0             # Install approximately version 1.0 of an IP in a git repository
-   mio ip install my_alias:@some_scope/some_ip@stable -r https://reg-url/  # Install a tagged IP version from a specific registry under a specific name (i.e. alias)"""
+   mio ip install                                                          # Install dependencies for project or local
+                                                                           # IP
+   mio ip install some_ip@1.0.0                                            # Install a specific version of an IP in the
+                                                                           # registry
+   mio ip install git://github.com/some-org/some-repo.git@^1.0             # Install approximately version 1.0 of an IP
+                                                                           # in a git repository
+   mio ip install my_alias:@some_scope/some_ip@stable -r https://reg-url/  # Install a tagged IP version from a specific
+                                                                           # registry under a specific name (i.e.
+                                                                           # alias)"""
 
 
 ########################################################################################################################

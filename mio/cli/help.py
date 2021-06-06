@@ -53,7 +53,7 @@ cli_options = """Options:
       given, each subsequent non-absolute -C <path> is interpreted relative to the preceding -C <path>.  If <path> is
       present but empty, e.g. -C "", then the current working directory is left unchanged.
    
-   -c <name>=<value>, --config=<name>=<value>
+   -c <name>[=<value>], --config=<name>[=<value>]
       Pass a configuration parameter to the command.  The value given will override values from configuration files.
       The <name> is expected in the same format as listed by `mio config` (subkeys separated by dots).
       
