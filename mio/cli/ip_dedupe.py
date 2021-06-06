@@ -14,7 +14,7 @@
    Attempts to simplify the overall structure by moving dependencies further up
    the tree
 
-Usage: mio ip dedupe [--dry-run]
+Usage: mio ip dedupe [options]
 
 Options:
    -d, --dry-run
@@ -40,6 +40,6 @@ import logging
 # ENTRY POINT
 def main(upper_args):
    logging.debug("ip_dedupe - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("ip_dedupe - args: " + str(args))
 ########################################################################################################################

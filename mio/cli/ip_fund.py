@@ -36,6 +36,6 @@ import logging
 ########################################################################################################################
 def main(upper_args):
    logging.debug("ip_fund - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("ip_fund - args: " + str(args))
 ########################################################################################################################

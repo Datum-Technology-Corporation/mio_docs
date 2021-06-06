@@ -14,10 +14,7 @@
    Automates version control system tasks
 
 Usage:
-  mio vcs populate   
-  mio vcs bless      
-  mio vcs sync       
-  mio vcs push       
+  TBD
 
 Options:
    TBD
@@ -48,7 +45,7 @@ def parse_args(args):
 ########################################################################################################################
 def main(upper_args):
    logging.debug("vcs - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("vcs - args: " + str(args))
    parse_args(args)
 ########################################################################################################################

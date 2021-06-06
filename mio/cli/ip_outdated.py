@@ -11,12 +11,12 @@
 
 
 """Moore.io IP Outdated Command
-   Checks registry to see if any (or, speific) installed IPs are currently outdated. By default, only the direct
+   Checks registry to see if any (or, specific) installed IPs are currently outdated. By default, only the direct
    dependencies of the Project are shown. Use --all to find all outdated meta-dependencies as well.
 
 Usage:
-   mio ip outdated [[@<scope>/]<ip> ...] [--all]
-   mio ip outdated *                     [--all]
+   mio ip outdated [[@<scope>/]<ip> ...] [options]
+   mio ip outdated *                     [options]
 
 Options:
    -a, --all   Also check meta-dependencies
@@ -40,6 +40,6 @@ import logging
 ########################################################################################################################
 def main(upper_args):
    logging.debug("ip_outdated - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("ip_outdated - args: " + str(args))
 ########################################################################################################################

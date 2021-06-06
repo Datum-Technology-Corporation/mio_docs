@@ -15,8 +15,8 @@
    structure.
 
 Usage:
-   mio ip ls [[@<scope>/]<ip> ...] [--all]
-   mio ip ls *                     [--all]
+   mio ip ls [[@<scope>/]<ip> ...] [options]
+   mio ip ls *                     [options]
 
 Options:
    -a, --all
@@ -58,6 +58,6 @@ import logging
 ########################################################################################################################
 def main(upper_args):
    logging.debug("ip_list - upper_args: " + str(upper_args))
-   args = docopt(__doc__, argv=upper_args, options_first=True)
+   args = docopt(__doc__, argv=upper_args, options_first=False)
    logging.debug("ip_list - args: " + str(args))
 ########################################################################################################################
