@@ -29,6 +29,9 @@
       * Built-in configuration file (`/path/to/mio/.mio.toml`)
       * Internal defaults (`mio config list -i`)
    
+   For a full list of Configuration parameters, see
+   'https://github.com/Datum-Technology-Corporation/mio_platform_client_cli_mvp/wiki/Configuration-List'.
+   
 Usage:
    mio config set    [options] <key>=<value> ...  Writes configuration key/value pair(s)
    mio config get    [options] <key>         ...  Prints configuration key(s)
